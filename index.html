@@ -1132,11 +1132,19 @@
         }
 
         /* PDF Report Styles - Redesigned */
-        .pdf-page {
-            page-break-after: always;
-            padding: 2rem;
+        #pdf-report {
+            width: 210mm;
             background: white;
-            min-height: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .pdf-page {
+            padding: 15mm 15mm;
+            background: white;
+            min-height: 277mm;
+            box-sizing: border-box;
+            page-break-after: always;
+            page-break-inside: avoid;
         }
 
         .pdf-page:last-child {
@@ -1147,199 +1155,210 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #2563eb;
         }
 
         .pdf-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
         }
 
         .pdf-logo-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--gradient-1);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 14px;
             color: white;
         }
 
         .pdf-logo-text {
-            font-size: 1.125rem;
+            font-size: 18px;
             font-weight: 700;
-            color: var(--primary);
+            color: #2563eb;
         }
 
         .pdf-date {
-            font-size: 0.75rem;
-            color: var(--gray-500);
+            font-size: 12px;
+            color: #64748b;
             text-align: right;
         }
 
         .pdf-title {
             text-align: center;
-            margin: 2rem 0;
+            margin: 25px 0;
         }
 
         .pdf-title h1 {
-            font-size: 1.75rem;
-            color: var(--gray-900);
-            margin-bottom: 0.5rem;
+            font-size: 26px;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
 
         .pdf-title p {
-            color: var(--gray-500);
-            font-size: 0.9rem;
+            color: #64748b;
+            font-size: 14px;
         }
 
         .pdf-respondent-info {
-            background: var(--gray-50);
-            padding: 1.25rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
         }
 
         .pdf-respondent-info h3 {
-            font-size: 0.875rem;
-            color: var(--gray-700);
-            margin-bottom: 0.75rem;
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
         .pdf-respondent-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
+            gap: 15px;
         }
 
         .pdf-respondent-item {
-            font-size: 0.8rem;
+            font-size: 13px;
         }
 
         .pdf-respondent-item strong {
-            color: var(--gray-800);
+            color: #64748b;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 3px;
         }
 
         .pdf-respondent-item span {
-            color: var(--gray-600);
-            display: block;
-            margin-top: 0.125rem;
+            color: #0f172a;
+            font-weight: 600;
         }
 
         .pdf-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
 
         .pdf-section-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--gray-200);
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
         }
 
         .pdf-section p {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: var(--gray-700);
+            font-size: 13px;
+            line-height: 1.7;
+            color: #475569;
         }
 
         .pdf-dimensions-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .pdf-dimension-card {
-            padding: 0.75rem;
+            padding: 12px 8px;
             background: white;
-            border: 1px solid var(--gray-200);
-            border-radius: 6px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
             text-align: center;
         }
 
         .pdf-dimension-card .icon {
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
+            font-size: 20px;
+            margin-bottom: 5px;
         }
 
         .pdf-dimension-card .name {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--gray-800);
+            font-size: 11px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
         }
 
         .pdf-dimension-card .desc {
-            font-size: 0.6rem;
-            color: var(--gray-500);
-            margin-top: 0.25rem;
+            font-size: 9px;
+            color: #64748b;
             line-height: 1.3;
         }
 
         .pdf-cta {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
-            padding: 1.25rem;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 20px;
         }
 
         .pdf-cta h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .pdf-cta p {
-            font-size: 0.8rem;
+            font-size: 13px;
             opacity: 0.9;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
         }
 
         .pdf-cta .contact-info {
-            font-size: 0.85rem;
+            font-size: 14px;
             font-weight: 600;
         }
 
         /* Page 2 Styles */
         .pdf-results-summary {
             display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 25px;
+            margin-bottom: 20px;
             align-items: flex-start;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
         }
 
         .pdf-score-circle {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            border: 6px solid;
+            border: 8px solid;
+            background: white;
         }
 
         .pdf-score-circle .score {
-            font-size: 2rem;
+            font-size: 36px;
             font-weight: 700;
-            color: var(--gray-900);
+            color: #0f172a;
         }
 
         .pdf-score-circle .max {
-            font-size: 0.75rem;
-            color: var(--gray-500);
+            font-size: 12px;
+            color: #64748b;
         }
 
         .pdf-score-details {
@@ -1348,11 +1367,11 @@
 
         .pdf-maturity-badge {
             display: inline-block;
-            padding: 0.5rem 1rem;
+            padding: 8px 16px;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 0.75rem;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 10px;
         }
 
         .pdf-maturity-badge.beginner { background: #fef2f2; color: #dc2626; }
@@ -1363,60 +1382,68 @@
         .pdf-category-scores {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 0.5rem;
-            margin: 1rem 0;
+            gap: 10px;
+            margin: 15px 0;
         }
 
         .pdf-category-score {
             text-align: center;
-            padding: 0.75rem 0.5rem;
-            background: var(--gray-50);
-            border-radius: 6px;
+            padding: 15px 10px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
         }
 
         .pdf-category-score .score {
-            font-size: 1.25rem;
+            font-size: 24px;
             font-weight: 700;
         }
 
         .pdf-category-score .name {
-            font-size: 0.65rem;
-            color: var(--gray-600);
-            margin-top: 0.25rem;
+            font-size: 10px;
+            color: #64748b;
+            margin-top: 5px;
+            font-weight: 500;
         }
 
+        .pdf-category-score.strategy { border-color: #2563eb; }
         .pdf-category-score.strategy .score { color: #2563eb; }
+        .pdf-category-score.people { border-color: #10b981; }
         .pdf-category-score.people .score { color: #10b981; }
+        .pdf-category-score.process { border-color: #f59e0b; }
         .pdf-category-score.process .score { color: #f59e0b; }
+        .pdf-category-score.data { border-color: #8b5cf6; }
         .pdf-category-score.data .score { color: #8b5cf6; }
+        .pdf-category-score.governance { border-color: #ec4899; }
         .pdf-category-score.governance .score { color: #ec4899; }
 
         .pdf-sw-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 15px;
+            margin-top: 15px;
         }
 
         .pdf-sw-card {
-            padding: 1rem;
+            padding: 15px;
             border-radius: 8px;
         }
 
         .pdf-sw-card.strengths {
             background: #f0fdf4;
-            border-left: 3px solid #10b981;
+            border: 1px solid #bbf7d0;
         }
 
         .pdf-sw-card.weaknesses {
             background: #fef2f2;
-            border-left: 3px solid #ef4444;
+            border: 1px solid #fecaca;
         }
 
         .pdf-sw-card h4 {
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            color: var(--gray-800);
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #0f172a;
+            font-weight: 600;
         }
 
         .pdf-sw-card ul {
@@ -1426,146 +1453,185 @@
         }
 
         .pdf-sw-card li {
-            font-size: 0.75rem;
-            color: var(--gray-700);
-            padding: 0.25rem 0;
-            padding-left: 1rem;
+            font-size: 12px;
+            color: #475569;
+            padding: 6px 0;
+            padding-left: 15px;
             position: relative;
+            line-height: 1.4;
         }
 
         .pdf-sw-card li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0.5rem;
-            width: 4px;
-            height: 4px;
+            top: 11px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            background: currentColor;
         }
 
+        .pdf-sw-card.strengths li::before { background: #10b981; }
+        .pdf-sw-card.weaknesses li::before { background: #ef4444; }
+
         .pdf-maturity-explanation {
-            background: var(--gray-50);
-            padding: 1rem;
+            background: #f1f5f9;
+            padding: 15px;
             border-radius: 8px;
-            margin-top: 1rem;
+            margin-top: 15px;
+            border-left: 4px solid #2563eb;
         }
 
         .pdf-maturity-explanation h4 {
-            font-size: 0.875rem;
-            color: var(--gray-800);
-            margin-bottom: 0.5rem;
+            font-size: 14px;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .pdf-maturity-explanation p {
-            font-size: 0.8rem;
-            color: var(--gray-600);
-            line-height: 1.5;
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.6;
         }
 
         /* Page 3 Styles */
         .pdf-next-step {
-            padding: 1rem;
+            padding: 15px;
             background: white;
-            border: 1px solid var(--gray-200);
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
-            margin-bottom: 0.75rem;
-            border-left: 4px solid var(--primary);
+            margin-bottom: 12px;
+            border-left: 5px solid #2563eb;
         }
 
         .pdf-next-step .step-header {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
+            gap: 10px;
+            margin-bottom: 8px;
         }
 
         .pdf-next-step .step-number {
-            width: 24px;
-            height: 24px;
-            background: var(--primary);
+            width: 28px;
+            height: 28px;
+            background: #2563eb;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            font-size: 14px;
             font-weight: 700;
         }
 
         .pdf-next-step .step-category {
-            font-size: 0.7rem;
-            color: var(--gray-500);
+            font-size: 11px;
+            color: #64748b;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
         .pdf-next-step h4 {
-            font-size: 0.875rem;
-            color: var(--gray-800);
-            margin-bottom: 0.375rem;
+            font-size: 14px;
+            color: #0f172a;
+            margin-bottom: 6px;
+            font-weight: 600;
         }
 
         .pdf-next-step p {
-            font-size: 0.75rem;
-            color: var(--gray-600);
+            font-size: 12px;
+            color: #475569;
             line-height: 1.5;
         }
 
         .pdf-industry-note {
             background: #eff6ff;
             border: 1px solid #bfdbfe;
-            padding: 0.75rem;
-            border-radius: 6px;
-            margin-top: 0.5rem;
+            padding: 15px;
+            border-radius: 8px;
         }
 
         .pdf-industry-note p {
-            font-size: 0.7rem;
+            font-size: 12px;
             color: #1e40af;
             margin: 0;
+            line-height: 1.6;
         }
 
         .pdf-final-cta {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 10px;
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 20px;
         }
 
         .pdf-final-cta h3 {
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .pdf-final-cta p {
-            font-size: 0.85rem;
+            font-size: 13px;
             opacity: 0.9;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
 
         .pdf-final-cta .cta-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            font-size: 0.85rem;
+            gap: 30px;
+            font-size: 13px;
         }
 
         .pdf-final-cta .cta-links span {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 6px;
         }
 
         .pdf-footer {
             text-align: center;
-            padding-top: 1rem;
-            margin-top: 1.5rem;
-            border-top: 1px solid var(--gray-200);
-            font-size: 0.7rem;
-            color: var(--gray-500);
+            padding-top: 15px;
+            margin-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .pdf-response-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .pdf-response-item:last-child {
+            border-bottom: none;
+        }
+
+        .pdf-response-item .question {
+            font-size: 12px;
+            color: #0f172a;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .pdf-response-item .answer {
+            font-size: 11px;
+            color: #64748b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pdf-response-item .answer .score-badge {
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
         }
 
         /* Print Styles */
@@ -1837,7 +1903,7 @@
         </section>
 
         <!-- PDF Report Template (Hidden) - Redesigned 3-Page Layout -->
-        <div id="pdf-report" class="hidden" style="background: white; color: #1e293b;">
+        <div id="pdf-report" class="hidden">
             <!-- PAGE 1: Introduction -->
             <div class="pdf-page">
                 <div class="pdf-header">
@@ -1852,7 +1918,7 @@
 
                 <div class="pdf-title">
                     <h1>AI Readiness Assessment Report</h1>
-                    <p>A comprehensive analysis of your organization's AI maturity</p>
+                    <p>A comprehensive analysis of your organization's AI maturity and actionable recommendations</p>
                 </div>
 
                 <div class="pdf-respondent-info">
@@ -1878,56 +1944,70 @@
                             <strong>Phone</strong>
                             <span id="pdf-user-phone">-</span>
                         </div>
+                        <div class="pdf-respondent-item">
+                            <strong>Assessment Date</strong>
+                            <span id="pdf-assessment-date">-</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="pdf-section">
                     <h3 class="pdf-section-title">About This Assessment</h3>
                     <p>
-                        This AI Readiness Assessment evaluates your organization's preparedness to leverage artificial intelligence effectively.
-                        By analyzing 20 key indicators across 5 critical dimensions, this report provides an objective view of your current
-                        capabilities and identifies specific areas for improvement to accelerate your AI journey.
+                        This AI Readiness Assessment provides a comprehensive evaluation of your organization's preparedness to leverage artificial intelligence effectively. Unlike simple surveys, this assessment analyzes 20 key indicators across 5 critical dimensions to provide an objective, data-driven view of your current capabilities.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        The results in this report will help you understand where your organization stands today, identify specific gaps that may be holding you back, and prioritize investments to accelerate your AI journey. Whether you're just getting started or looking to scale existing initiatives, this assessment provides a clear baseline for measuring progress.
                     </p>
                 </div>
 
                 <div class="pdf-section">
                     <h3 class="pdf-section-title">The Five Dimensions of AI Readiness</h3>
                     <p>
-                        Our framework assesses AI readiness across five interconnected dimensions. Each dimension represents
-                        a critical pillar that organizations must develop to successfully implement and scale AI initiatives.
+                        Our framework assesses AI readiness across five interconnected dimensions. Each dimension represents a critical pillar that organizations must develop to successfully implement and scale AI initiatives. Weakness in any single dimension can limit your overall AI effectiveness.
                     </p>
                     <div class="pdf-dimensions-grid">
                         <div class="pdf-dimension-card">
                             <div class="icon">&#x1F3AF;</div>
                             <div class="name">Strategy</div>
-                            <div class="desc">AI vision, leadership support, use case prioritization, ROI measurement</div>
+                            <div class="desc">Vision, leadership, use cases, ROI measurement</div>
                         </div>
                         <div class="pdf-dimension-card">
                             <div class="icon">&#x1F465;</div>
                             <div class="name">People</div>
-                            <div class="desc">AI literacy, workforce readiness, talent strategy, change management</div>
+                            <div class="desc">AI literacy, skills, talent, change management</div>
                         </div>
                         <div class="pdf-dimension-card">
                             <div class="icon">&#x2699;</div>
                             <div class="name">Process</div>
-                            <div class="desc">Development maturity, integration, maintenance, scaling capabilities</div>
+                            <div class="desc">Development, integration, maintenance, scaling</div>
                         </div>
                         <div class="pdf-dimension-card">
                             <div class="icon">&#x1F4BE;</div>
                             <div class="name">Data</div>
-                            <div class="desc">Data quality, infrastructure, governance, AI-readiness of data</div>
+                            <div class="desc">Quality, infrastructure, governance, AI-readiness</div>
                         </div>
                         <div class="pdf-dimension-card">
                             <div class="icon">&#x1F6E1;</div>
                             <div class="name">Governance</div>
-                            <div class="desc">Ethics, risk management, compliance, transparency</div>
+                            <div class="desc">Ethics, risk, compliance, transparency</div>
                         </div>
                     </div>
                 </div>
 
+                <div class="pdf-section">
+                    <h3 class="pdf-section-title">How to Use This Report</h3>
+                    <p>
+                        <strong>Page 2 - Your Results:</strong> Review your overall score and maturity level, understand your performance across each dimension, and identify your key strengths and areas needing improvement.
+                    </p>
+                    <p style="margin-top: 8px;">
+                        <strong>Page 3 - Next Steps:</strong> Follow the prioritized recommendations tailored to your specific gaps, and review industry-specific insights relevant to your sector.
+                    </p>
+                </div>
+
                 <div class="pdf-cta">
                     <h3>Questions about this assessment?</h3>
-                    <p>Our team is here to help you understand your results and plan your next steps.</p>
+                    <p>Our team of AI experts is here to help you understand your results and develop a customized roadmap.</p>
                     <div class="contact-info">theaiguides.co | hello@theaiguides.co</div>
                 </div>
             </div>
@@ -1942,7 +2022,7 @@
                     <div class="pdf-date">Page 2 of 3</div>
                 </div>
 
-                <h2 class="pdf-section-title" style="margin-top: 0;">Your Results</h2>
+                <h2 class="pdf-section-title" style="margin-top: 0; margin-bottom: 15px;">Your Results Overview</h2>
 
                 <div class="pdf-results-summary">
                     <div class="pdf-score-circle" id="pdf-score-circle" style="border-color: #2563eb;">
@@ -1953,7 +2033,7 @@
                         <div class="pdf-maturity-badge" id="pdf-maturity-badge">
                             <span id="pdf-maturity-level">-</span>
                         </div>
-                        <p id="pdf-summary-text" style="font-size: 0.85rem; color: #475569; line-height: 1.5; margin-top: 0.5rem;">
+                        <p id="pdf-summary-text" style="font-size: 13px; color: #475569; line-height: 1.6; margin-top: 10px;">
                             Your assessment summary will appear here.
                         </p>
                     </div>
@@ -1961,26 +2041,27 @@
 
                 <div class="pdf-section">
                     <h3 class="pdf-section-title">Score by Category</h3>
+                    <p style="margin-bottom: 10px; font-size: 12px;">Each category is scored out of 16 points (4 questions x 4 max points). Higher scores indicate greater maturity in that dimension.</p>
                     <div class="pdf-category-scores">
                         <div class="pdf-category-score strategy">
                             <div class="score" id="pdf-strategy-score">0</div>
-                            <div class="name">Strategy (of 16)</div>
+                            <div class="name">Strategy<br/>(of 16)</div>
                         </div>
                         <div class="pdf-category-score people">
                             <div class="score" id="pdf-people-score">0</div>
-                            <div class="name">People (of 16)</div>
+                            <div class="name">People<br/>(of 16)</div>
                         </div>
                         <div class="pdf-category-score process">
                             <div class="score" id="pdf-process-score">0</div>
-                            <div class="name">Process (of 16)</div>
+                            <div class="name">Process<br/>(of 16)</div>
                         </div>
                         <div class="pdf-category-score data">
                             <div class="score" id="pdf-data-score">0</div>
-                            <div class="name">Data (of 16)</div>
+                            <div class="name">Data<br/>(of 16)</div>
                         </div>
                         <div class="pdf-category-score governance">
                             <div class="score" id="pdf-governance-score">0</div>
-                            <div class="name">Governance (of 16)</div>
+                            <div class="name">Governance<br/>(of 16)</div>
                         </div>
                     </div>
                 </div>
@@ -1997,10 +2078,15 @@
                 </div>
 
                 <div class="pdf-maturity-explanation">
-                    <h4>What does "<span id="pdf-maturity-label">-</span>" mean?</h4>
+                    <h4>What does "<span id="pdf-maturity-label">-</span>" maturity mean?</h4>
                     <p id="pdf-maturity-description">
                         Your maturity level explanation will appear here.
                     </p>
+                </div>
+
+                <div class="pdf-section" style="margin-top: 15px;">
+                    <h3 class="pdf-section-title">Your Response Summary</h3>
+                    <div id="pdf-responses-summary" style="font-size: 11px; color: #475569;"></div>
                 </div>
             </div>
 
@@ -2015,32 +2101,38 @@
                 </div>
 
                 <h2 class="pdf-section-title" style="margin-top: 0;">Recommended Next Steps</h2>
-                <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">
-                    Based on your assessment results, here are three prioritized actions to advance your AI journey.
-                    These recommendations focus on your lowest-scoring areas to maximize impact.
+                <p style="font-size: 13px; color: #64748b; margin-bottom: 15px;">
+                    Based on your assessment results, here are three prioritized actions to advance your AI journey. These recommendations target your lowest-scoring areas to maximize impact and represent achievable "quick wins" that can build momentum for larger initiatives.
                 </p>
 
                 <div id="pdf-next-steps"></div>
 
-                <div class="pdf-section" style="margin-top: 1.5rem;">
-                    <h3 class="pdf-section-title">Industry Insights</h3>
+                <div class="pdf-section" style="margin-top: 20px;">
+                    <h3 class="pdf-section-title">Industry Insights: <span id="pdf-industry-name">Your Industry</span></h3>
                     <div id="pdf-industry-insights" class="pdf-industry-note">
                         <p>Industry-specific recommendations will appear here.</p>
                     </div>
                 </div>
 
+                <div class="pdf-section" style="margin-top: 15px;">
+                    <h3 class="pdf-section-title">Measuring Progress</h3>
+                    <p style="font-size: 12px; color: #475569; line-height: 1.6;">
+                        We recommend retaking this assessment quarterly to track your progress and adjust priorities. As you implement changes, you should expect to see measurable improvements in your scores. The AI Guides can provide ongoing advisory support to help you stay on track and overcome obstacles.
+                    </p>
+                </div>
+
                 <div class="pdf-final-cta">
                     <h3>Ready to Accelerate Your AI Journey?</h3>
-                    <p>The AI Guides team specializes in helping organizations like yours implement AI successfully. Let's discuss how we can help you achieve your AI goals.</p>
+                    <p>The AI Guides team specializes in helping organizations like yours implement AI successfully. From strategy development to hands-on implementation, we can help you achieve your AI goals faster.</p>
                     <div class="cta-links">
                         <span>&#x1F310; theaiguides.co</span>
                         <span>&#x1F4E7; hello@theaiguides.co</span>
-                        <span>&#x1F4DE; Schedule a Call</span>
+                        <span>&#x1F4DE; Book a Free Consultation</span>
                     </div>
                 </div>
 
                 <div class="pdf-footer">
-                    <p>&copy; 2025 The AI Guides. All rights reserved. | theaiguides.co</p>
+                    <p>&copy; 2025 The AI Guides. All rights reserved. | theaiguides.co | This report is confidential and intended for the recipient only.</p>
                 </div>
             </div>
         </div>
@@ -2650,11 +2742,12 @@
         function generateReport() {
             const { categoryScores, categoryMaxScores, totalScore, maxScore } = calculateScores();
             const maturity = getMaturityLevel(totalScore, maxScore);
-
-            // Set date
-            document.getElementById('report-date').textContent = new Date().toLocaleDateString('en-US', {
+            const dateStr = new Date().toLocaleDateString('en-US', {
                 year: 'numeric', month: 'long', day: 'numeric'
             });
+
+            // Set date
+            document.getElementById('report-date').textContent = dateStr;
 
             // PAGE 1: Respondent Info
             document.getElementById('pdf-user-name').textContent = userInfo.name || '-';
@@ -2662,6 +2755,7 @@
             document.getElementById('pdf-user-phone').textContent = userInfo.phone || 'Not provided';
             document.getElementById('pdf-user-company').textContent = userInfo.company || '-';
             document.getElementById('pdf-user-industry').textContent = userInfo.industry || '-';
+            document.getElementById('pdf-assessment-date').textContent = dateStr;
 
             // PAGE 2: Results
             document.getElementById('pdf-total-score').textContent = totalScore;
@@ -2686,20 +2780,25 @@
             maturityBadge.className = `pdf-maturity-badge ${maturity.class}`;
             document.getElementById('pdf-maturity-level').textContent = maturity.level;
 
-            // Summary text
-            const summaryText = `Your organization scored ${totalScore} out of ${maxScore} (${Math.round((totalScore/maxScore)*100)}%), placing you at the "${maturity.level}" maturity level. ${getTopPerformingArea(categoryScores, categoryMaxScores)} requires the most attention to accelerate your AI journey.`;
+            // Detailed summary text
+            const percentage = Math.round((totalScore/maxScore)*100);
+            const summaryText = `${userInfo.company} scored ${totalScore} out of ${maxScore} points (${percentage}%), achieving "${maturity.level}" AI maturity. ${getDetailedSummary(categoryScores, categoryMaxScores, maturity.level)}`;
             document.getElementById('pdf-summary-text').textContent = summaryText;
 
-            // Strengths and Weaknesses
-            const strengths = getStrengths(categoryScores, categoryMaxScores);
+            // Detailed Strengths and Weaknesses
+            const strengths = getDetailedStrengths(categoryScores, categoryMaxScores);
             document.getElementById('pdf-strengths').innerHTML = strengths.map(s => `<li>${s}</li>`).join('');
 
-            const gaps = getGaps(categoryScores, categoryMaxScores);
+            const gaps = getDetailedGaps(categoryScores, categoryMaxScores);
             document.getElementById('pdf-weaknesses').innerHTML = gaps.map(g => `<li>${g}</li>`).join('');
 
             // Maturity explanation
             document.getElementById('pdf-maturity-label').textContent = maturity.level;
             document.getElementById('pdf-maturity-description').textContent = getMaturityDescription(maturity.level);
+
+            // Response Summary - show key answers
+            const responseSummary = generateResponseSummary(categoryScores, categoryMaxScores);
+            document.getElementById('pdf-responses-summary').innerHTML = responseSummary;
 
             // PAGE 3: Next Steps
             const sortedCategories = Object.keys(categoryScores)
@@ -2716,21 +2815,24 @@
                 if (cat.percentage >= 50) recLevel = 'medium';
                 if (cat.percentage >= 75) recLevel = 'high';
                 const rec = recommendationsByCategory[cat.category][recLevel];
+                const actionItems = getActionItems(cat.category, recLevel);
 
                 return `
                     <div class="pdf-next-step">
                         <div class="step-header">
                             <div class="step-number">${idx + 1}</div>
-                            <span class="step-category">${cat.category} (${cat.score}/${cat.max})</span>
+                            <span class="step-category">${cat.category} - Score: ${cat.score}/${cat.max} (${Math.round(cat.percentage)}%)</span>
                         </div>
                         <h4>${rec.title}</h4>
                         <p>${rec.description}</p>
+                        <p style="margin-top: 8px; font-style: italic;"><strong>Quick wins:</strong> ${actionItems}</p>
                     </div>
                 `;
             }).join('');
             document.getElementById('pdf-next-steps').innerHTML = nextStepsHtml;
 
             // Industry-specific insights
+            document.getElementById('pdf-industry-name').textContent = userInfo.industry || 'Your Industry';
             const industryInsights = getIndustryInsights(userInfo.industry, categoryScores, categoryMaxScores, maturity.level);
             document.getElementById('pdf-industry-insights').innerHTML = `<p>${industryInsights}</p>`;
 
@@ -2739,17 +2841,125 @@
             element.classList.remove('hidden');
 
             const opt = {
-                margin: 10,
+                margin: [10, 10, 10, 10],
                 filename: `AI-Readiness-Assessment-${userInfo.company.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false
+                },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: ['css', 'legacy'] }
+                pagebreak: { mode: 'css', before: '.pdf-page', avoid: '.pdf-next-step' }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
                 element.classList.add('hidden');
             });
+        }
+
+        function getDetailedSummary(scores, maxScores, maturityLevel) {
+            const sorted = Object.keys(scores)
+                .map(cat => ({ cat, pct: (scores[cat] / maxScores[cat]) * 100 }))
+                .sort((a, b) => b.pct - a.pct);
+
+            const strongest = sorted[0];
+            const weakest = sorted[sorted.length - 1];
+
+            return `Your strongest area is ${strongest.cat} at ${Math.round(strongest.pct)}%, while ${weakest.cat} at ${Math.round(weakest.pct)}% represents your biggest opportunity for improvement. Focus your initial efforts on ${weakest.cat} to build a stronger foundation for AI success.`;
+        }
+
+        function getDetailedStrengths(scores, maxScores) {
+            const strengths = [];
+            const sorted = Object.keys(scores)
+                .map(cat => ({ cat, score: scores[cat], max: maxScores[cat], pct: (scores[cat] / maxScores[cat]) * 100 }))
+                .sort((a, b) => b.pct - a.pct);
+
+            sorted.forEach(item => {
+                if (item.pct >= 75) {
+                    strengths.push(`<strong>${item.cat} (${item.score}/${item.max}):</strong> Excellent capabilities - positioned for advanced AI initiatives`);
+                } else if (item.pct >= 50) {
+                    strengths.push(`<strong>${item.cat} (${item.score}/${item.max}):</strong> Solid foundation - ready to build on existing capabilities`);
+                }
+            });
+
+            if (strengths.length === 0) {
+                strengths.push("Proactive approach in assessing AI readiness");
+                strengths.push("Opportunity to build capabilities with intentional strategy");
+            }
+            return strengths;
+        }
+
+        function getDetailedGaps(scores, maxScores) {
+            const gaps = [];
+            const sorted = Object.keys(scores)
+                .map(cat => ({ cat, score: scores[cat], max: maxScores[cat], pct: (scores[cat] / maxScores[cat]) * 100 }))
+                .sort((a, b) => a.pct - b.pct);
+
+            sorted.forEach(item => {
+                if (item.pct < 25) {
+                    gaps.push(`<strong>${item.cat} (${item.score}/${item.max}):</strong> Critical gap - foundational work required before scaling AI`);
+                } else if (item.pct < 50) {
+                    gaps.push(`<strong>${item.cat} (${item.score}/${item.max}):</strong> Development needed - strengthen basics to support AI deployment`);
+                }
+            });
+
+            if (gaps.length === 0) {
+                gaps.push("No critical gaps identified - focus on optimization and scaling");
+            }
+            return gaps;
+        }
+
+        function generateResponseSummary(scores, maxScores) {
+            const categories = Object.keys(scores);
+            let html = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">';
+
+            categories.forEach(cat => {
+                const pct = Math.round((scores[cat] / maxScores[cat]) * 100);
+                let status = 'Needs Work';
+                let color = '#dc2626';
+                if (pct >= 75) { status = 'Strong'; color = '#16a34a'; }
+                else if (pct >= 50) { status = 'Developing'; color = '#d97706'; }
+                else if (pct >= 25) { status = 'Early Stage'; color = '#f59e0b'; }
+
+                html += `<div style="padding: 6px; background: #f8fafc; border-radius: 4px; border-left: 3px solid ${color};">
+                    <strong>${cat}:</strong> ${scores[cat]}/${maxScores[cat]} - <span style="color: ${color}">${status}</span>
+                </div>`;
+            });
+
+            html += '</div>';
+            return html;
+        }
+
+        function getActionItems(category, level) {
+            const actions = {
+                Strategy: {
+                    low: "Schedule an AI strategy workshop with leadership, identify 2-3 potential use cases, research competitor AI initiatives",
+                    medium: "Create a formal business case template, establish AI steering committee meetings, define success metrics",
+                    high: "Explore AI partnerships, develop thought leadership content, assess M&A opportunities in AI"
+                },
+                People: {
+                    low: "Launch basic AI awareness training, identify internal AI champions, survey current skill levels",
+                    medium: "Implement role-specific training tracks, create AI career paths, establish communities of practice",
+                    high: "Develop internal certification programs, create innovation challenges, build external partnerships"
+                },
+                Process: {
+                    low: "Document current AI workflows, create pilot project templates, establish basic quality gates",
+                    medium: "Implement MLOps tools, create reusable components, build monitoring dashboards",
+                    high: "Automate model retraining, create self-service platforms, optimize for time-to-value"
+                },
+                Data: {
+                    low: "Conduct data audit, prioritize data quality for key use cases, create basic data catalog",
+                    medium: "Implement data quality monitoring, build feature stores, strengthen privacy controls",
+                    high: "Implement data mesh architecture, explore synthetic data, optimize real-time pipelines"
+                },
+                Governance: {
+                    low: "Draft AI ethics principles, create basic risk checklist, identify relevant regulations",
+                    medium: "Establish AI review board, implement documentation standards, create audit trails",
+                    high: "Conduct third-party AI audits, contribute to industry standards, publish responsible AI practices"
+                }
+            };
+            return actions[category]?.[level] || "Assess current state and develop improvement plan";
         }
 
         function getMaturityDescription(level) {
