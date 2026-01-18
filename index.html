@@ -191,6 +191,218 @@
             color: var(--gray-500);
         }
 
+        /* Process Steps */
+        .process-section {
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+
+        .process-section h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--gray-900);
+            margin-bottom: 2rem;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 60px;
+            right: 60px;
+            height: 2px;
+            background: var(--gray-200);
+        }
+
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h4 {
+            font-size: 0.9rem;
+            color: var(--gray-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .process-step p {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            max-width: 120px;
+        }
+
+        /* About AI Guides Section */
+        .about-section {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-section h2 {
+            font-size: 1.5rem;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .about-section .subtitle {
+            text-align: center;
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+        }
+
+        .about-section p {
+            font-size: 1rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .about-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--gray-100);
+            border-radius: 8px;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .about-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* User Info Form */
+        .user-info-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .user-info-section h2 {
+            font-size: 1.25rem;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .user-info-section .subtitle {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .form-group label .optional {
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--gray-800);
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group input::placeholder {
+            color: var(--gray-400);
+        }
+
+        .form-actions {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        @media (max-width: 640px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .process-steps {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .process-steps::before {
+                display: none;
+            }
+        }
+
         .info-box {
             background: var(--gray-100);
             border-left: 4px solid var(--primary);
@@ -255,24 +467,27 @@
             color: white;
         }
 
-        /* Progress Bar */
+        /* Progress Bar - Compact */
         .progress-container {
             background: white;
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .progress-category {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             color: var(--primary);
             font-weight: 600;
             text-transform: uppercase;
@@ -280,12 +495,12 @@
         }
 
         .progress-count {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             color: var(--gray-500);
         }
 
         .progress-bar-wrapper {
-            height: 8px;
+            height: 6px;
             background: var(--gray-200);
             border-radius: 100px;
             overflow: hidden;
@@ -298,13 +513,15 @@
             transition: width 0.4s ease;
         }
 
-        /* Question Card */
+        /* Question Card - Compact Version */
         .question-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             box-shadow: var(--shadow-md);
             overflow: hidden;
             animation: slideUp 0.4s ease;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         @keyframes slideUp {
@@ -320,42 +537,52 @@
 
         .question-header {
             background: var(--gradient-2);
-            padding: 2rem;
+            padding: 1.25rem 1.5rem;
             color: white;
         }
 
         .question-number {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             color: var(--gray-400);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .question-text {
-            font-size: 1.5rem;
+            font-size: 1.125rem;
             font-weight: 600;
             line-height: 1.4;
         }
 
+        .question-context {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-top: 0.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
         .question-body {
-            padding: 2rem;
+            padding: 1.25rem 1.5rem;
         }
 
         .answer-options {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.625rem;
         }
 
         .answer-option {
             position: relative;
-            padding: 1.25rem 1.5rem;
+            padding: 0.875rem 1rem;
             border: 2px solid var(--gray-200);
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s;
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .answer-option:hover {
@@ -369,8 +596,8 @@
         }
 
         .answer-radio {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border: 2px solid var(--gray-300);
             border-radius: 50%;
             flex-shrink: 0;
@@ -378,6 +605,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
+            margin-top: 1px;
         }
 
         .answer-option.selected .answer-radio {
@@ -387,8 +615,8 @@
 
         .answer-option.selected .answer-radio::after {
             content: '';
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: white;
             border-radius: 50%;
         }
@@ -399,20 +627,27 @@
 
         .answer-label {
             font-weight: 500;
+            font-size: 0.9rem;
             color: var(--gray-800);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.125rem;
         }
 
         .answer-description {
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             color: var(--gray-500);
+            line-height: 1.4;
         }
 
         .question-nav {
             display: flex;
             justify-content: space-between;
-            padding: 1.5rem 2rem;
+            padding: 1rem 1.5rem;
             border-top: 1px solid var(--gray-100);
+        }
+
+        .question-nav .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
         }
 
         /* Hidden Sections */
@@ -896,6 +1131,443 @@
             }
         }
 
+        /* PDF Report Styles - Redesigned */
+        .pdf-page {
+            page-break-after: always;
+            padding: 2rem;
+            background: white;
+            min-height: 100%;
+        }
+
+        .pdf-page:last-child {
+            page-break-after: auto;
+        }
+
+        .pdf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .pdf-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pdf-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .pdf-logo-text {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .pdf-date {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-align: right;
+        }
+
+        .pdf-title {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .pdf-title h1 {
+            font-size: 1.75rem;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-title p {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+
+        .pdf-respondent-info {
+            background: var(--gray-50);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .pdf-respondent-info h3 {
+            font-size: 0.875rem;
+            color: var(--gray-700);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pdf-respondent-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+
+        .pdf-respondent-item {
+            font-size: 0.8rem;
+        }
+
+        .pdf-respondent-item strong {
+            color: var(--gray-800);
+        }
+
+        .pdf-respondent-item span {
+            color: var(--gray-600);
+            display: block;
+            margin-top: 0.125rem;
+        }
+
+        .pdf-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .pdf-section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .pdf-section p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--gray-700);
+        }
+
+        .pdf-dimensions-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .pdf-dimension-card {
+            padding: 0.75rem;
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .pdf-dimension-card .icon {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pdf-dimension-card .name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .pdf-dimension-card .desc {
+            font-size: 0.6rem;
+            color: var(--gray-500);
+            margin-top: 0.25rem;
+            line-height: 1.3;
+        }
+
+        .pdf-cta {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .pdf-cta h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-cta p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-cta .contact-info {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Page 2 Styles */
+        .pdf-results-summary {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .pdf-score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 6px solid;
+        }
+
+        .pdf-score-circle .score {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .pdf-score-circle .max {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .pdf-score-details {
+            flex: 1;
+        }
+
+        .pdf-maturity-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pdf-maturity-badge.beginner { background: #fef2f2; color: #dc2626; }
+        .pdf-maturity-badge.developing { background: #fffbeb; color: #d97706; }
+        .pdf-maturity-badge.established { background: #ecfeff; color: #0891b2; }
+        .pdf-maturity-badge.advanced { background: #f0fdf4; color: #16a34a; }
+
+        .pdf-category-scores {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .pdf-category-score {
+            text-align: center;
+            padding: 0.75rem 0.5rem;
+            background: var(--gray-50);
+            border-radius: 6px;
+        }
+
+        .pdf-category-score .score {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .pdf-category-score .name {
+            font-size: 0.65rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+
+        .pdf-category-score.strategy .score { color: #2563eb; }
+        .pdf-category-score.people .score { color: #10b981; }
+        .pdf-category-score.process .score { color: #f59e0b; }
+        .pdf-category-score.data .score { color: #8b5cf6; }
+        .pdf-category-score.governance .score { color: #ec4899; }
+
+        .pdf-sw-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pdf-sw-card {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .pdf-sw-card.strengths {
+            background: #f0fdf4;
+            border-left: 3px solid #10b981;
+        }
+
+        .pdf-sw-card.weaknesses {
+            background: #fef2f2;
+            border-left: 3px solid #ef4444;
+        }
+
+        .pdf-sw-card h4 {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-800);
+        }
+
+        .pdf-sw-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pdf-sw-card li {
+            font-size: 0.75rem;
+            color: var(--gray-700);
+            padding: 0.25rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .pdf-sw-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .pdf-maturity-explanation {
+            background: var(--gray-50);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .pdf-maturity-explanation h4 {
+            font-size: 0.875rem;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-maturity-explanation p {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        /* Page 3 Styles */
+        .pdf-next-step {
+            padding: 1rem;
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .pdf-next-step .step-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-next-step .step-number {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .pdf-next-step .step-category {
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pdf-next-step h4 {
+            font-size: 0.875rem;
+            color: var(--gray-800);
+            margin-bottom: 0.375rem;
+        }
+
+        .pdf-next-step p {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        .pdf-industry-note {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+        }
+
+        .pdf-industry-note p {
+            font-size: 0.7rem;
+            color: #1e40af;
+            margin: 0;
+        }
+
+        .pdf-final-cta {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .pdf-final-cta h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pdf-final-cta p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-final-cta .cta-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .pdf-final-cta .cta-links span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pdf-footer {
+            text-align: center;
+            padding-top: 1rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+            font-size: 0.7rem;
+            color: var(--gray-500);
+        }
+
         /* Print Styles */
         @media print {
             .no-print {
@@ -958,44 +1630,148 @@
                 </div>
             </div>
 
-            <div class="info-box">
-                <p><strong>How it works:</strong> Answer 20 questions honestly to get an accurate picture of your organization's AI readiness. You'll receive a detailed breakdown with specific recommendations.</p>
+            <!-- Process Steps -->
+            <div class="process-section">
+                <h2>How the Assessment Works</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="process-step-number">1</div>
+                        <h4>Tell Us About You</h4>
+                        <p>Quick intro with your details</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">2</div>
+                        <h4>Answer Questions</h4>
+                        <p>20 questions across 5 dimensions</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">3</div>
+                        <h4>Get Your Score</h4>
+                        <p>Instant analysis and insights</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">4</div>
+                        <h4>Download Report</h4>
+                        <p>Personalized PDF with next steps</p>
+                    </div>
+                </div>
             </div>
 
             <button class="btn btn-primary" onclick="startAssessment()">
                 Start Assessment <span>&rarr;</span>
             </button>
+
+            <!-- About The AI Guides Section -->
+            <div class="about-section">
+                <h2>About The AI Guides</h2>
+                <p class="subtitle">Your Partner in AI Transformation</p>
+                <p>
+                    The AI Guides is a specialist AI consultancy helping organizations navigate their AI journey with confidence. We combine deep technical expertise with practical business acumen to deliver AI solutions that drive real results.
+                </p>
+                <p>
+                    Whether you're just starting to explore AI possibilities or looking to scale existing initiatives, our team of experienced practitioners can help you develop strategy, build capabilities, and implement solutions that matter. We believe in demystifying AI and making it accessible to organizations of all sizes.
+                </p>
+                <div class="about-links">
+                    <a href="https://theaiguides.co" class="about-link" target="_blank">
+                        <span>&#x1F310;</span> Visit Our Website
+                    </a>
+                    <a href="https://theaiguides.co/services" class="about-link" target="_blank">
+                        <span>&#x1F4BC;</span> Our Services
+                    </a>
+                    <a href="https://theaiguides.co/blog" class="about-link" target="_blank">
+                        <span>&#x1F4DD;</span> AI Insights Blog
+                    </a>
+                    <a href="https://theaiguides.co/contact" class="about-link" target="_blank">
+                        <span>&#x1F4E7;</span> Get in Touch
+                    </a>
+                </div>
+            </div>
         </section>
 
         <!-- Assessment Section -->
         <section id="assessment-section" class="hidden">
-            <!-- Progress -->
-            <div class="progress-container">
-                <div class="progress-header">
-                    <span class="progress-category" id="current-category">Strategy</span>
-                    <span class="progress-count"><span id="current-question">1</span> of 20</span>
+            <!-- User Info Section -->
+            <div id="user-info-section" class="user-info-section">
+                <h2>Before We Begin</h2>
+                <p class="subtitle">Tell us a bit about yourself and your organization so we can personalize your results.</p>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="user-name">Full Name</label>
+                        <input type="text" id="user-name" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email Address</label>
+                        <input type="email" id="user-email" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-phone">Phone Number <span class="optional">(Optional)</span></label>
+                        <input type="tel" id="user-phone" placeholder="+1 (555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-company">Company Name</label>
+                        <input type="text" id="user-company" placeholder="Acme Corporation" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="user-industry">Industry</label>
+                        <select id="user-industry" required>
+                            <option value="">Select your industry...</option>
+                            <option value="Technology">Technology & Software</option>
+                            <option value="Financial Services">Financial Services & Banking</option>
+                            <option value="Healthcare">Healthcare & Life Sciences</option>
+                            <option value="Manufacturing">Manufacturing & Industrial</option>
+                            <option value="Retail">Retail & E-commerce</option>
+                            <option value="Professional Services">Professional Services & Consulting</option>
+                            <option value="Energy">Energy & Utilities</option>
+                            <option value="Telecommunications">Telecommunications</option>
+                            <option value="Education">Education</option>
+                            <option value="Government">Government & Public Sector</option>
+                            <option value="Real Estate">Real Estate & Construction</option>
+                            <option value="Transportation">Transportation & Logistics</option>
+                            <option value="Media">Media & Entertainment</option>
+                            <option value="Hospitality">Hospitality & Travel</option>
+                            <option value="Agriculture">Agriculture & Food</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="progress-bar-wrapper">
-                    <div class="progress-bar" id="progress-bar" style="width: 5%;"></div>
+                <div class="form-actions">
+                    <button class="btn btn-primary" onclick="startQuestions()">
+                        Begin Assessment <span>&rarr;</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Question Card -->
-            <div class="question-card">
-                <div class="question-header">
-                    <div class="question-number">Question <span id="question-number">1</span></div>
-                    <div class="question-text" id="question-text"></div>
+            <!-- Questions Section (initially hidden) -->
+            <div id="questions-section" class="hidden">
+                <!-- Progress -->
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <span class="progress-category" id="current-category">Strategy</span>
+                        <span class="progress-count"><span id="current-question">1</span> of 20</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-bar" id="progress-bar" style="width: 5%;"></div>
+                    </div>
                 </div>
-                <div class="question-body">
-                    <div class="answer-options" id="answer-options"></div>
-                </div>
-                <div class="question-nav">
-                    <button class="btn btn-secondary" id="prev-btn" onclick="previousQuestion()">
-                        &larr; Previous
-                    </button>
-                    <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()" disabled>
-                        Next &rarr;
-                    </button>
+
+                <!-- Question Card -->
+                <div class="question-card">
+                    <div class="question-header">
+                        <div class="question-number">Question <span id="question-number">1</span></div>
+                        <div class="question-text" id="question-text"></div>
+                        <div class="question-context" id="question-context"></div>
+                    </div>
+                    <div class="question-body">
+                        <div class="answer-options" id="answer-options"></div>
+                    </div>
+                    <div class="question-nav">
+                        <button class="btn btn-secondary" id="prev-btn" onclick="previousQuestion()">
+                            &larr; Previous
+                        </button>
+                        <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()" disabled>
+                            Next &rarr;
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1060,74 +1836,211 @@
             </div>
         </section>
 
-        <!-- PDF Report Template (Hidden) -->
-        <div id="pdf-report" class="hidden">
-            <div class="report-section" style="background: white; color: #1e293b;">
-                <div class="report-header">
-                    <div>
-                        <div class="report-title">AI Readiness Assessment Report</div>
-                        <div class="report-subtitle">Generated on <span id="report-date"></span></div>
+        <!-- PDF Report Template (Hidden) - Redesigned 3-Page Layout -->
+        <div id="pdf-report" class="hidden" style="background: white; color: #1e293b;">
+            <!-- PAGE 1: Introduction -->
+            <div class="pdf-page">
+                <div class="pdf-header">
+                    <div class="pdf-logo">
+                        <div class="pdf-logo-icon">AG</div>
+                        <div class="pdf-logo-text">The AI Guides</div>
                     </div>
-                    <div class="report-logo">
-                        <div class="logo-text" style="color: #2563eb; font-size: 1.125rem;">The AI Guides</div>
-                        <div style="font-size: 0.75rem; color: #64748b;">theaiguides.co</div>
-                    </div>
-                </div>
-
-                <h2 class="report-section-title">Executive Summary</h2>
-                <p class="report-text" id="report-summary"></p>
-
-                <h2 class="report-section-title">Overall Score</h2>
-                <div class="report-score-summary">
-                    <div class="report-score-item">
-                        <div class="score" id="report-total-score">0</div>
-                        <div class="label">Total (of 80)</div>
-                    </div>
-                    <div class="report-score-item">
-                        <div class="score" id="report-strategy-score">0</div>
-                        <div class="label">Strategy</div>
-                    </div>
-                    <div class="report-score-item">
-                        <div class="score" id="report-people-score">0</div>
-                        <div class="label">People</div>
-                    </div>
-                    <div class="report-score-item">
-                        <div class="score" id="report-process-score">0</div>
-                        <div class="label">Process</div>
-                    </div>
-                    <div class="report-score-item">
-                        <div class="score" id="report-data-score">0</div>
-                        <div class="label">Data</div>
-                    </div>
-                </div>
-                <div class="report-score-summary" style="grid-template-columns: 1fr;">
-                    <div class="report-score-item">
-                        <div class="score" id="report-governance-score">0</div>
-                        <div class="label">Governance</div>
+                    <div class="pdf-date">
+                        Generated on <span id="report-date"></span>
                     </div>
                 </div>
 
-                <h2 class="report-section-title">Key Strengths</h2>
-                <ul class="report-list" id="report-strengths"></ul>
+                <div class="pdf-title">
+                    <h1>AI Readiness Assessment Report</h1>
+                    <p>A comprehensive analysis of your organization's AI maturity</p>
+                </div>
 
-                <h2 class="report-section-title">Areas for Improvement</h2>
-                <ul class="report-list" id="report-gaps"></ul>
+                <div class="pdf-respondent-info">
+                    <h3>Assessment Details</h3>
+                    <div class="pdf-respondent-grid">
+                        <div class="pdf-respondent-item">
+                            <strong>Name</strong>
+                            <span id="pdf-user-name">-</span>
+                        </div>
+                        <div class="pdf-respondent-item">
+                            <strong>Company</strong>
+                            <span id="pdf-user-company">-</span>
+                        </div>
+                        <div class="pdf-respondent-item">
+                            <strong>Industry</strong>
+                            <span id="pdf-user-industry">-</span>
+                        </div>
+                        <div class="pdf-respondent-item">
+                            <strong>Email</strong>
+                            <span id="pdf-user-email">-</span>
+                        </div>
+                        <div class="pdf-respondent-item">
+                            <strong>Phone</strong>
+                            <span id="pdf-user-phone">-</span>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="page-break"></div>
+                <div class="pdf-section">
+                    <h3 class="pdf-section-title">About This Assessment</h3>
+                    <p>
+                        This AI Readiness Assessment evaluates your organization's preparedness to leverage artificial intelligence effectively.
+                        By analyzing 20 key indicators across 5 critical dimensions, this report provides an objective view of your current
+                        capabilities and identifies specific areas for improvement to accelerate your AI journey.
+                    </p>
+                </div>
 
-                <h2 class="report-section-title" style="margin-top: 0;">Your Responses</h2>
-                <ul class="report-list" id="report-responses"></ul>
+                <div class="pdf-section">
+                    <h3 class="pdf-section-title">The Five Dimensions of AI Readiness</h3>
+                    <p>
+                        Our framework assesses AI readiness across five interconnected dimensions. Each dimension represents
+                        a critical pillar that organizations must develop to successfully implement and scale AI initiatives.
+                    </p>
+                    <div class="pdf-dimensions-grid">
+                        <div class="pdf-dimension-card">
+                            <div class="icon">&#x1F3AF;</div>
+                            <div class="name">Strategy</div>
+                            <div class="desc">AI vision, leadership support, use case prioritization, ROI measurement</div>
+                        </div>
+                        <div class="pdf-dimension-card">
+                            <div class="icon">&#x1F465;</div>
+                            <div class="name">People</div>
+                            <div class="desc">AI literacy, workforce readiness, talent strategy, change management</div>
+                        </div>
+                        <div class="pdf-dimension-card">
+                            <div class="icon">&#x2699;</div>
+                            <div class="name">Process</div>
+                            <div class="desc">Development maturity, integration, maintenance, scaling capabilities</div>
+                        </div>
+                        <div class="pdf-dimension-card">
+                            <div class="icon">&#x1F4BE;</div>
+                            <div class="name">Data</div>
+                            <div class="desc">Data quality, infrastructure, governance, AI-readiness of data</div>
+                        </div>
+                        <div class="pdf-dimension-card">
+                            <div class="icon">&#x1F6E1;</div>
+                            <div class="name">Governance</div>
+                            <div class="desc">Ethics, risk management, compliance, transparency</div>
+                        </div>
+                    </div>
+                </div>
 
-                <h2 class="report-section-title">Recommended Next Steps</h2>
-                <ol class="report-list" id="report-next-steps" style="list-style: decimal; padding-left: 1.25rem;"></ol>
+                <div class="pdf-cta">
+                    <h3>Questions about this assessment?</h3>
+                    <p>Our team is here to help you understand your results and plan your next steps.</p>
+                    <div class="contact-info">theaiguides.co | hello@theaiguides.co</div>
+                </div>
+            </div>
 
-                <h2 class="report-section-title">Opportunities</h2>
-                <p class="report-text" id="report-opportunities"></p>
+            <!-- PAGE 2: Results -->
+            <div class="pdf-page">
+                <div class="pdf-header">
+                    <div class="pdf-logo">
+                        <div class="pdf-logo-icon">AG</div>
+                        <div class="pdf-logo-text">The AI Guides</div>
+                    </div>
+                    <div class="pdf-date">Page 2 of 3</div>
+                </div>
 
-                <div style="margin-top: 3rem; padding: 1.5rem; background: #f1f5f9; border-radius: 8px; text-align: center;">
-                    <p style="font-weight: 600; color: #1e293b; margin-bottom: 0.5rem;">Need help implementing these recommendations?</p>
-                    <p style="color: #64748b; font-size: 0.875rem; margin-bottom: 1rem;">The AI Guides team specializes in helping organizations accelerate their AI journey.</p>
-                    <p style="color: #2563eb; font-weight: 500;">Visit theaiguides.co or email hello@theaiguides.co</p>
+                <h2 class="pdf-section-title" style="margin-top: 0;">Your Results</h2>
+
+                <div class="pdf-results-summary">
+                    <div class="pdf-score-circle" id="pdf-score-circle" style="border-color: #2563eb;">
+                        <div class="score" id="pdf-total-score">0</div>
+                        <div class="max">of 80</div>
+                    </div>
+                    <div class="pdf-score-details">
+                        <div class="pdf-maturity-badge" id="pdf-maturity-badge">
+                            <span id="pdf-maturity-level">-</span>
+                        </div>
+                        <p id="pdf-summary-text" style="font-size: 0.85rem; color: #475569; line-height: 1.5; margin-top: 0.5rem;">
+                            Your assessment summary will appear here.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pdf-section">
+                    <h3 class="pdf-section-title">Score by Category</h3>
+                    <div class="pdf-category-scores">
+                        <div class="pdf-category-score strategy">
+                            <div class="score" id="pdf-strategy-score">0</div>
+                            <div class="name">Strategy (of 16)</div>
+                        </div>
+                        <div class="pdf-category-score people">
+                            <div class="score" id="pdf-people-score">0</div>
+                            <div class="name">People (of 16)</div>
+                        </div>
+                        <div class="pdf-category-score process">
+                            <div class="score" id="pdf-process-score">0</div>
+                            <div class="name">Process (of 16)</div>
+                        </div>
+                        <div class="pdf-category-score data">
+                            <div class="score" id="pdf-data-score">0</div>
+                            <div class="name">Data (of 16)</div>
+                        </div>
+                        <div class="pdf-category-score governance">
+                            <div class="score" id="pdf-governance-score">0</div>
+                            <div class="name">Governance (of 16)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pdf-sw-grid">
+                    <div class="pdf-sw-card strengths">
+                        <h4>&#x2705; Key Strengths</h4>
+                        <ul id="pdf-strengths"></ul>
+                    </div>
+                    <div class="pdf-sw-card weaknesses">
+                        <h4>&#x26A0; Areas for Improvement</h4>
+                        <ul id="pdf-weaknesses"></ul>
+                    </div>
+                </div>
+
+                <div class="pdf-maturity-explanation">
+                    <h4>What does "<span id="pdf-maturity-label">-</span>" mean?</h4>
+                    <p id="pdf-maturity-description">
+                        Your maturity level explanation will appear here.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PAGE 3: Next Steps -->
+            <div class="pdf-page">
+                <div class="pdf-header">
+                    <div class="pdf-logo">
+                        <div class="pdf-logo-icon">AG</div>
+                        <div class="pdf-logo-text">The AI Guides</div>
+                    </div>
+                    <div class="pdf-date">Page 3 of 3</div>
+                </div>
+
+                <h2 class="pdf-section-title" style="margin-top: 0;">Recommended Next Steps</h2>
+                <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">
+                    Based on your assessment results, here are three prioritized actions to advance your AI journey.
+                    These recommendations focus on your lowest-scoring areas to maximize impact.
+                </p>
+
+                <div id="pdf-next-steps"></div>
+
+                <div class="pdf-section" style="margin-top: 1.5rem;">
+                    <h3 class="pdf-section-title">Industry Insights</h3>
+                    <div id="pdf-industry-insights" class="pdf-industry-note">
+                        <p>Industry-specific recommendations will appear here.</p>
+                    </div>
+                </div>
+
+                <div class="pdf-final-cta">
+                    <h3>Ready to Accelerate Your AI Journey?</h3>
+                    <p>The AI Guides team specializes in helping organizations like yours implement AI successfully. Let's discuss how we can help you achieve your AI goals.</p>
+                    <div class="cta-links">
+                        <span>&#x1F310; theaiguides.co</span>
+                        <span>&#x1F4E7; hello@theaiguides.co</span>
+                        <span>&#x1F4DE; Schedule a Call</span>
+                    </div>
+                </div>
+
+                <div class="pdf-footer">
+                    <p>&copy; 2025 The AI Guides. All rights reserved. | theaiguides.co</p>
                 </div>
             </div>
         </div>
@@ -1138,12 +2051,13 @@
     </footer>
 
     <script>
-        // Questions Data
+        // Questions Data with Context/Definitions for clarity
         const questions = [
             // STRATEGY (4 questions)
             {
                 category: "Strategy",
                 question: "How well-defined is your organization's AI strategy and vision?",
+                context: "AI Strategy refers to a documented plan that outlines how your organization will leverage artificial intelligence to achieve business objectives, including goals, priorities, and resource allocation.",
                 options: [
                     { label: "No AI strategy", description: "We haven't developed any formal AI strategy or vision", score: 1 },
                     { label: "Informal discussions", description: "Some conversations about AI, but no documented strategy", score: 2 },
@@ -1154,6 +2068,7 @@
             {
                 category: "Strategy",
                 question: "How does leadership support AI initiatives in your organization?",
+                context: "Executive sponsorship means senior leaders actively championing AI, allocating budget and resources, removing obstacles, and advocating for AI adoption across the organization.",
                 options: [
                     { label: "No executive support", description: "Leadership is not engaged or aware of AI potential", score: 1 },
                     { label: "Passive interest", description: "Some curiosity from leadership but no active sponsorship", score: 2 },
@@ -1164,6 +2079,7 @@
             {
                 category: "Strategy",
                 question: "How do you identify and prioritize AI use cases?",
+                context: "AI use cases are specific applications where AI can solve business problems or create value. Prioritization involves evaluating factors like business impact, feasibility, and resource requirements.",
                 options: [
                     { label: "Ad-hoc exploration", description: "No systematic approach to identifying AI opportunities", score: 1 },
                     { label: "Reactive approach", description: "We explore AI when specific problems arise", score: 2 },
@@ -1174,6 +2090,7 @@
             {
                 category: "Strategy",
                 question: "How do you measure the ROI and impact of AI initiatives?",
+                context: "AI ROI measurement involves tracking both quantitative metrics (cost savings, revenue gains) and qualitative outcomes (efficiency, customer satisfaction) to evaluate the value delivered by AI investments.",
                 options: [
                     { label: "No measurement", description: "We don't track AI initiative outcomes", score: 1 },
                     { label: "Basic tracking", description: "We track some outputs but lack comprehensive metrics", score: 2 },
@@ -1185,6 +2102,7 @@
             {
                 category: "People",
                 question: "What is the current level of AI literacy across your organization?",
+                context: "AI literacy means employees understand basic AI concepts, can identify potential AI applications in their work, and know how to effectively collaborate with AI tools and systems.",
                 options: [
                     { label: "Very limited", description: "Most employees have little understanding of AI", score: 1 },
                     { label: "Basic awareness", description: "General awareness exists but skills are concentrated in IT", score: 2 },
@@ -1195,6 +2113,7 @@
             {
                 category: "People",
                 question: "How equipped is your workforce to work alongside AI tools?",
+                context: "This refers to employees having access to approved AI tools, receiving training on how to use them effectively, and being comfortable integrating AI into their daily workflows.",
                 options: [
                     { label: "Not equipped", description: "Employees lack training and tools to use AI effectively", score: 1 },
                     { label: "Early adoption", description: "Some teams experimenting with AI tools informally", score: 2 },
@@ -1205,6 +2124,7 @@
             {
                 category: "People",
                 question: "How does your organization address AI talent needs?",
+                context: "AI talent includes data scientists, ML engineers, AI product managers, and domain experts who can apply AI. This covers hiring, upskilling, retention, and partnerships to build capabilities.",
                 options: [
                     { label: "No plan", description: "We haven't addressed AI talent requirements", score: 1 },
                     { label: "Reactive hiring", description: "Hiring AI talent as specific needs arise", score: 2 },
@@ -1215,6 +2135,7 @@
             {
                 category: "People",
                 question: "How is change management handled for AI adoption?",
+                context: "Change management for AI involves helping employees adapt to new AI-driven ways of working, addressing concerns about job impact, communicating benefits, and supporting the transition.",
                 options: [
                     { label: "No change management", description: "AI changes implemented without structured support", score: 1 },
                     { label: "Basic communication", description: "Some announcements but limited change support", score: 2 },
@@ -1226,6 +2147,7 @@
             {
                 category: "Process",
                 question: "How mature are your processes for developing and deploying AI solutions?",
+                context: "This covers the end-to-end workflow from data preparation to model deployment, including development standards, testing procedures, and deployment practices (often called MLOps).",
                 options: [
                     { label: "No defined process", description: "AI development is ad-hoc without standard practices", score: 1 },
                     { label: "Basic workflows", description: "Some documented steps but inconsistent application", score: 2 },
@@ -1236,6 +2158,7 @@
             {
                 category: "Process",
                 question: "How well integrated is AI into your core business processes?",
+                context: "AI integration means AI systems are embedded into daily operations (e.g., customer service, supply chain, decision-making) rather than existing as standalone experiments or tools.",
                 options: [
                     { label: "Not integrated", description: "AI exists as isolated experiments or proofs of concept", score: 1 },
                     { label: "Limited integration", description: "AI supports a few specific workflows", score: 2 },
@@ -1246,6 +2169,7 @@
             {
                 category: "Process",
                 question: "How do you handle AI model maintenance and updates?",
+                context: "AI models can degrade over time as data patterns change (called 'model drift'). Maintenance involves monitoring performance, detecting issues, and updating or retraining models as needed.",
                 options: [
                     { label: "No maintenance plan", description: "Models deployed without ongoing maintenance consideration", score: 1 },
                     { label: "Reactive fixes", description: "We address issues when they become apparent", score: 2 },
@@ -1256,6 +2180,7 @@
             {
                 category: "Process",
                 question: "How do you scale successful AI pilots to production?",
+                context: "Moving from pilot to production involves operationalizing AI solutions for broader use, ensuring reliability at scale, integrating with existing systems, and supporting ongoing operations.",
                 options: [
                     { label: "Struggle to scale", description: "Pilots rarely make it to production deployment", score: 1 },
                     { label: "Case-by-case", description: "Some pilots scale but without repeatable process", score: 2 },
@@ -1267,6 +2192,7 @@
             {
                 category: "Data",
                 question: "How would you rate the quality and accessibility of your data?",
+                context: "Data quality includes accuracy, completeness, consistency, and timeliness. Accessibility means authorized users can easily find and access the data they need for AI development.",
                 options: [
                     { label: "Poor quality/siloed", description: "Data is scattered, inconsistent, and hard to access", score: 1 },
                     { label: "Improving", description: "Some data cleaning efforts but significant gaps remain", score: 2 },
@@ -1277,6 +2203,7 @@
             {
                 category: "Data",
                 question: "How mature is your data infrastructure for AI workloads?",
+                context: "AI-ready infrastructure includes modern data platforms, cloud computing resources, tools for data processing and storage, and computing power sufficient for training and running AI models.",
                 options: [
                     { label: "Legacy systems", description: "Outdated infrastructure not suited for AI workloads", score: 1 },
                     { label: "Basic capability", description: "Some modern tools but limited AI-specific infrastructure", score: 2 },
@@ -1287,6 +2214,7 @@
             {
                 category: "Data",
                 question: "How do you manage data governance and data privacy?",
+                context: "Data governance defines policies for data ownership, quality, security, and usage. Privacy controls ensure personal data is protected and compliance requirements (like GDPR) are met.",
                 options: [
                     { label: "Minimal governance", description: "Limited policies or controls around data usage", score: 1 },
                     { label: "Basic policies", description: "Some data policies but inconsistent enforcement", score: 2 },
@@ -1297,6 +2225,7 @@
             {
                 category: "Data",
                 question: "How prepared is your data for AI training and deployment?",
+                context: "AI-ready data is properly formatted, labeled (if needed for supervised learning), documented, and organized with clear versioning so it can be reliably used for model training.",
                 options: [
                     { label: "Not prepared", description: "Data needs significant work before AI use", score: 1 },
                     { label: "Partially ready", description: "Some datasets ready but labeling/preparation gaps exist", score: 2 },
@@ -1308,6 +2237,7 @@
             {
                 category: "Governance",
                 question: "How does your organization approach AI ethics and responsible AI?",
+                context: "Responsible AI means developing and using AI in ways that are fair, transparent, safe, and accountable. This includes considering bias, societal impact, and ensuring AI aligns with organizational values.",
                 options: [
                     { label: "Not addressed", description: "AI ethics hasn't been formally considered", score: 1 },
                     { label: "Awareness stage", description: "Discussions happening but no formal framework", score: 2 },
@@ -1318,6 +2248,7 @@
             {
                 category: "Governance",
                 question: "How do you manage AI-related risks?",
+                context: "AI risks include model failures, biased outputs, security vulnerabilities, regulatory non-compliance, and reputational damage. Risk management involves identifying, assessing, and mitigating these risks.",
                 options: [
                     { label: "No risk framework", description: "AI risks not systematically identified or managed", score: 1 },
                     { label: "Basic awareness", description: "Some risks recognized but no formal management", score: 2 },
@@ -1328,6 +2259,7 @@
             {
                 category: "Governance",
                 question: "How compliant are your AI practices with relevant regulations?",
+                context: "AI regulations (like EU AI Act, sector-specific rules) are evolving rapidly. Compliance means understanding which regulations apply to your AI use cases and implementing required controls.",
                 options: [
                     { label: "Unknown status", description: "Haven't assessed AI regulatory requirements", score: 1 },
                     { label: "Initial assessment", description: "Aware of regulations but compliance gaps exist", score: 2 },
@@ -1338,6 +2270,7 @@
             {
                 category: "Governance",
                 question: "How transparent and explainable are your AI systems?",
+                context: "AI explainability means understanding how AI systems make decisions. Transparency involves documenting AI systems and being able to explain their outputs to stakeholders in understandable terms.",
                 options: [
                     { label: "Black box", description: "AI decisions cannot be explained or audited", score: 1 },
                     { label: "Limited visibility", description: "Some documentation but explainability is limited", score: 2 },
@@ -1350,6 +2283,13 @@
         // State
         let currentQuestion = 0;
         let answers = new Array(questions.length).fill(null);
+        let userInfo = {
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            industry: ''
+        };
 
         // Category configurations
         const categories = {
@@ -1438,6 +2378,37 @@
         function startAssessment() {
             document.getElementById('welcome-screen').classList.add('hidden');
             document.getElementById('assessment-section').classList.remove('hidden');
+            document.getElementById('user-info-section').classList.remove('hidden');
+            document.getElementById('questions-section').classList.add('hidden');
+        }
+
+        function startQuestions() {
+            // Validate and collect user info
+            const name = document.getElementById('user-name').value.trim();
+            const email = document.getElementById('user-email').value.trim();
+            const phone = document.getElementById('user-phone').value.trim();
+            const company = document.getElementById('user-company').value.trim();
+            const industry = document.getElementById('user-industry').value;
+
+            // Basic validation
+            if (!name || !email || !company || !industry) {
+                alert('Please fill in all required fields (Name, Email, Company, and Industry).');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Store user info
+            userInfo = { name, email, phone, company, industry };
+
+            // Show questions section
+            document.getElementById('user-info-section').classList.add('hidden');
+            document.getElementById('questions-section').classList.remove('hidden');
             renderQuestion();
         }
 
@@ -1450,8 +2421,9 @@
             document.getElementById('question-number').textContent = currentQuestion + 1;
             document.getElementById('progress-bar').style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
 
-            // Update question text
+            // Update question text and context
             document.getElementById('question-text').textContent = q.question;
+            document.getElementById('question-context').textContent = q.context || '';
 
             // Render options
             const optionsContainer = document.getElementById('answer-options');
@@ -1476,7 +2448,19 @@
 
         function selectAnswer(idx) {
             answers[currentQuestion] = idx;
+
+            // Show selection briefly, then auto-advance
             renderQuestion();
+
+            // Auto-advance after a short delay for visual feedback
+            setTimeout(() => {
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    renderQuestion();
+                } else {
+                    showResults();
+                }
+            }, 400);
         }
 
         function previousQuestion() {
@@ -1672,45 +2656,83 @@
                 year: 'numeric', month: 'long', day: 'numeric'
             });
 
-            // Set scores
-            document.getElementById('report-total-score').textContent = totalScore;
-            document.getElementById('report-strategy-score').textContent = categoryScores['Strategy'];
-            document.getElementById('report-people-score').textContent = categoryScores['People'];
-            document.getElementById('report-process-score').textContent = categoryScores['Process'];
-            document.getElementById('report-data-score').textContent = categoryScores['Data'];
-            document.getElementById('report-governance-score').textContent = categoryScores['Governance'];
+            // PAGE 1: Respondent Info
+            document.getElementById('pdf-user-name').textContent = userInfo.name || '-';
+            document.getElementById('pdf-user-email').textContent = userInfo.email || '-';
+            document.getElementById('pdf-user-phone').textContent = userInfo.phone || 'Not provided';
+            document.getElementById('pdf-user-company').textContent = userInfo.company || '-';
+            document.getElementById('pdf-user-industry').textContent = userInfo.industry || '-';
 
-            // Generate executive summary
-            const summaryText = `Your organization achieved an overall AI readiness score of ${totalScore} out of ${maxScore} (${Math.round((totalScore/maxScore)*100)}%), placing you at the "${maturity.level}" maturity level. This assessment evaluated five critical dimensions: Strategy, People, Process, Data, and Governance. ${getTopPerformingArea(categoryScores, categoryMaxScores)} requires the most attention to accelerate your AI journey.`;
-            document.getElementById('report-summary').textContent = summaryText;
+            // PAGE 2: Results
+            document.getElementById('pdf-total-score').textContent = totalScore;
+            document.getElementById('pdf-strategy-score').textContent = categoryScores['Strategy'];
+            document.getElementById('pdf-people-score').textContent = categoryScores['People'];
+            document.getElementById('pdf-process-score').textContent = categoryScores['Process'];
+            document.getElementById('pdf-data-score').textContent = categoryScores['Data'];
+            document.getElementById('pdf-governance-score').textContent = categoryScores['Governance'];
 
-            // Generate strengths
+            // Set score circle border color based on maturity
+            const scoreCircle = document.getElementById('pdf-score-circle');
+            const maturityColors = {
+                beginner: '#dc2626',
+                developing: '#d97706',
+                established: '#0891b2',
+                advanced: '#16a34a'
+            };
+            scoreCircle.style.borderColor = maturityColors[maturity.class] || '#2563eb';
+
+            // Set maturity badge
+            const maturityBadge = document.getElementById('pdf-maturity-badge');
+            maturityBadge.className = `pdf-maturity-badge ${maturity.class}`;
+            document.getElementById('pdf-maturity-level').textContent = maturity.level;
+
+            // Summary text
+            const summaryText = `Your organization scored ${totalScore} out of ${maxScore} (${Math.round((totalScore/maxScore)*100)}%), placing you at the "${maturity.level}" maturity level. ${getTopPerformingArea(categoryScores, categoryMaxScores)} requires the most attention to accelerate your AI journey.`;
+            document.getElementById('pdf-summary-text').textContent = summaryText;
+
+            // Strengths and Weaknesses
             const strengths = getStrengths(categoryScores, categoryMaxScores);
-            document.getElementById('report-strengths').innerHTML = strengths.map(s =>
-                `<li><span class="bullet"></span>${s}</li>`
-            ).join('');
+            document.getElementById('pdf-strengths').innerHTML = strengths.map(s => `<li>${s}</li>`).join('');
 
-            // Generate gaps
             const gaps = getGaps(categoryScores, categoryMaxScores);
-            document.getElementById('report-gaps').innerHTML = gaps.map(g =>
-                `<li><span class="bullet"></span>${g}</li>`
-            ).join('');
+            document.getElementById('pdf-weaknesses').innerHTML = gaps.map(g => `<li>${g}</li>`).join('');
 
-            // Generate response summary
-            const responses = questions.map((q, idx) => {
-                const answer = q.options[answers[idx]];
-                return `<li><span class="bullet"></span><strong>${q.category}:</strong> ${q.question}<br><em style="color: #64748b; margin-left: 1rem;">Your answer: ${answer.label} (Score: ${answer.score}/4)</em></li>`;
+            // Maturity explanation
+            document.getElementById('pdf-maturity-label').textContent = maturity.level;
+            document.getElementById('pdf-maturity-description').textContent = getMaturityDescription(maturity.level);
+
+            // PAGE 3: Next Steps
+            const sortedCategories = Object.keys(categoryScores)
+                .map(cat => ({
+                    category: cat,
+                    score: categoryScores[cat],
+                    max: categoryMaxScores[cat],
+                    percentage: (categoryScores[cat] / categoryMaxScores[cat]) * 100
+                }))
+                .sort((a, b) => a.percentage - b.percentage);
+
+            const nextStepsHtml = sortedCategories.slice(0, 3).map((cat, idx) => {
+                let recLevel = 'low';
+                if (cat.percentage >= 50) recLevel = 'medium';
+                if (cat.percentage >= 75) recLevel = 'high';
+                const rec = recommendationsByCategory[cat.category][recLevel];
+
+                return `
+                    <div class="pdf-next-step">
+                        <div class="step-header">
+                            <div class="step-number">${idx + 1}</div>
+                            <span class="step-category">${cat.category} (${cat.score}/${cat.max})</span>
+                        </div>
+                        <h4>${rec.title}</h4>
+                        <p>${rec.description}</p>
+                    </div>
+                `;
             }).join('');
-            document.getElementById('report-responses').innerHTML = responses;
+            document.getElementById('pdf-next-steps').innerHTML = nextStepsHtml;
 
-            // Generate next steps
-            const nextSteps = getNextSteps(categoryScores, categoryMaxScores);
-            document.getElementById('report-next-steps').innerHTML = nextSteps.map(step =>
-                `<li style="padding: 0.5rem 0; border-bottom: none;">${step}</li>`
-            ).join('');
-
-            // Generate opportunities
-            document.getElementById('report-opportunities').textContent = getOpportunities(categoryScores, categoryMaxScores, maturity.level);
+            // Industry-specific insights
+            const industryInsights = getIndustryInsights(userInfo.industry, categoryScores, categoryMaxScores, maturity.level);
+            document.getElementById('pdf-industry-insights').innerHTML = `<p>${industryInsights}</p>`;
 
             // Generate PDF
             const element = document.getElementById('pdf-report');
@@ -1718,15 +2740,49 @@
 
             const opt = {
                 margin: 10,
-                filename: 'AI-Readiness-Assessment-Report.pdf',
+                filename: `AI-Readiness-Assessment-${userInfo.company.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['css', 'legacy'] }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
                 element.classList.add('hidden');
             });
+        }
+
+        function getMaturityDescription(level) {
+            const descriptions = {
+                'Advanced': 'Organizations at this level have AI deeply embedded in their operations and culture. AI is a key competitive differentiator with strong governance, skilled teams, and mature processes. Focus should be on innovation and maintaining leadership.',
+                'Established': 'Your organization has built a solid AI foundation with working systems and growing expertise. AI delivers measurable value in several areas. The next step is scaling successful initiatives and building more sophisticated capabilities.',
+                'Developing': 'You have started your AI journey with some initiatives underway and growing awareness. Key foundations are being built but significant work remains. Prioritize quick wins that demonstrate value while building core capabilities.',
+                'Beginner': 'Your organization is at the early stages of AI adoption. This is a common starting point for many organizations. The key is to build awareness, establish foundations, and identify high-value pilot projects to begin the journey.'
+            };
+            return descriptions[level] || descriptions['Beginner'];
+        }
+
+        function getIndustryInsights(industry, scores, maxScores, maturityLevel) {
+            const industryTips = {
+                'Technology': `As a technology organization, you have natural advantages in AI adoption. Focus on leveraging your technical talent to build proprietary AI capabilities. Consider how AI can enhance your products and create new revenue streams. Your developers and engineers can be powerful AI champions if properly enabled.`,
+                'Financial Services': `In financial services, AI offers major opportunities in risk management, fraud detection, customer service, and personalization. Regulatory compliance (including AI-specific regulations) is critical. Prioritize explainable AI and robust governance given the high-stakes nature of financial decisions.`,
+                'Healthcare': `Healthcare AI must balance innovation with patient safety and privacy. Focus on clinical validation and regulatory approval pathways. AI can transform diagnostics, patient care, and operational efficiency. Ensure robust data governance given the sensitivity of health data.`,
+                'Manufacturing': `Manufacturing offers rich AI opportunities in predictive maintenance, quality control, supply chain optimization, and production efficiency. Start with sensor data and equipment monitoring for quick wins. Your operational data is a valuable asset for AI.`,
+                'Retail': `Retail AI can transform customer experience, inventory management, demand forecasting, and personalization. Focus on unifying customer data across channels. Quick wins often come from recommendation engines and supply chain optimization.`,
+                'Professional Services': `For professional services, AI can augment expertise and improve client delivery. Focus on knowledge management, document analysis, and client insights. AI tools can help professionals work more efficiently and deliver better outcomes.`,
+                'Energy': `Energy sector AI applications include grid optimization, predictive maintenance, demand forecasting, and sustainability initiatives. Safety-critical applications require robust testing and governance. Consider how AI can support your energy transition goals.`,
+                'Telecommunications': `Telecom can leverage AI for network optimization, customer experience, churn prediction, and service personalization. You have rich data assets to train AI models. Focus on real-time AI for network operations.`,
+                'Education': `Educational AI can personalize learning, automate administrative tasks, and improve student outcomes. Focus on ethical AI use with students. Consider how AI can help educators be more effective rather than replacing them.`,
+                'Government': `Government AI must prioritize transparency, fairness, and public trust. Focus on citizen services, operational efficiency, and evidence-based policy. Procurement and change management are often key challenges. Start with low-risk, high-impact applications.`,
+                'Real Estate': `Real estate AI can enhance property valuation, market analysis, customer matching, and operational efficiency. Focus on data quality from property and market sources. Consider how AI can improve both buyer/seller and tenant experiences.`,
+                'Transportation': `Transportation AI opportunities include route optimization, predictive maintenance, demand forecasting, and safety improvements. Real-time data and IoT integration are key enablers. Focus on operational efficiency for quick wins.`,
+                'Media': `Media and entertainment AI can transform content creation, personalization, audience insights, and advertising. Focus on creative AI tools and recommendation engines. Consider how AI can enhance rather than replace creative talent.`,
+                'Hospitality': `Hospitality AI can improve guest experience, pricing optimization, operational efficiency, and personalization. Focus on using customer data responsibly. Quick wins often come from chatbots, demand forecasting, and dynamic pricing.`,
+                'Agriculture': `Agricultural AI applications include precision farming, crop monitoring, supply chain optimization, and sustainability. IoT sensors and satellite data can power AI insights. Focus on practical solutions that work in field conditions.`,
+                'Other': `Regardless of your specific industry, focus on identifying the unique data assets and processes where AI can add value. Look at what leading organizations in adjacent industries are doing with AI. Build foundational capabilities while pursuing quick-win use cases.`
+            };
+
+            return industryTips[industry] || industryTips['Other'];
         }
 
         function getTopPerformingArea(scores, maxScores) {
@@ -1807,7 +2863,19 @@
         function restartAssessment() {
             currentQuestion = 0;
             answers = new Array(questions.length).fill(null);
+            userInfo = { name: '', email: '', phone: '', company: '', industry: '' };
+
+            // Reset form fields
+            document.getElementById('user-name').value = '';
+            document.getElementById('user-email').value = '';
+            document.getElementById('user-phone').value = '';
+            document.getElementById('user-company').value = '';
+            document.getElementById('user-industry').value = '';
+
+            // Reset visibility
             document.getElementById('results-section').classList.add('hidden');
+            document.getElementById('assessment-section').classList.add('hidden');
+            document.getElementById('questions-section').classList.add('hidden');
             document.getElementById('welcome-screen').classList.remove('hidden');
         }
     </script>
