@@ -2583,7 +2583,10 @@
                     categoryScores[cat] = 0;
                     categoryMaxScores[cat] = 0;
                 }
-                categoryScores[cat] += q.options[answers[idx]].score;
+                // Handle null answers (default to score of 1 if not answered)
+                const answerIdx = answers[idx];
+                const score = (answerIdx !== null && q.options[answerIdx]) ? q.options[answerIdx].score : 1;
+                categoryScores[cat] += score;
                 categoryMaxScores[cat] += 4; // Max score per question
             });
 
@@ -2602,112 +2605,142 @@
         }
 
         function showResults() {
-            document.getElementById('assessment-section').classList.add('hidden');
-            document.getElementById('results-section').classList.remove('hidden');
+            try {
+                document.getElementById('assessment-section').classList.add('hidden');
+                document.getElementById('results-section').classList.remove('hidden');
 
-            const { categoryScores, categoryMaxScores, totalScore, maxScore } = calculateScores();
-            const maturity = getMaturityLevel(totalScore, maxScore);
+                const { categoryScores, categoryMaxScores, totalScore, maxScore } = calculateScores();
+                const maturity = getMaturityLevel(totalScore, maxScore);
 
-            // Animate total score
-            const scoreCircle = document.getElementById('score-circle');
-            const totalScoreEl = document.getElementById('total-score');
-            const targetPercent = (totalScore / maxScore) * 100;
+                // Animate total score
+                const scoreCircle = document.getElementById('score-circle');
+                const totalScoreEl = document.getElementById('total-score');
 
-            let currentScore = 0;
-            const scoreInterval = setInterval(() => {
-                currentScore++;
-                totalScoreEl.textContent = currentScore;
-                scoreCircle.style.setProperty('--score-percent', (currentScore / maxScore) * 100);
-                if (currentScore >= totalScore) clearInterval(scoreInterval);
-            }, 30);
+                if (totalScoreEl) {
+                    let currentScore = 0;
+                    const scoreInterval = setInterval(() => {
+                        currentScore++;
+                        totalScoreEl.textContent = currentScore;
+                        if (scoreCircle) {
+                            scoreCircle.style.setProperty('--score-percent', (currentScore / maxScore) * 100);
+                        }
+                        if (currentScore >= totalScore) clearInterval(scoreInterval);
+                    }, 30);
+                }
 
-            // Set maturity badge
-            const maturityBadge = document.getElementById('maturity-badge');
-            maturityBadge.className = `maturity-badge ${maturity.class}`;
-            document.getElementById('maturity-level').textContent = maturity.level;
+                // Set maturity badge
+                const maturityBadge = document.getElementById('maturity-badge');
+                if (maturityBadge) {
+                    maturityBadge.className = `maturity-badge ${maturity.class}`;
+                }
+                const maturityLevelEl = document.getElementById('maturity-level');
+                if (maturityLevelEl) {
+                    maturityLevelEl.textContent = maturity.level;
+                }
 
-            // Render category breakdown
-            const categoryList = document.getElementById('category-list');
-            categoryList.innerHTML = Object.keys(categoryScores).map(cat => {
-                const score = categoryScores[cat];
-                const max = categoryMaxScores[cat];
-                const percentage = (score / max) * 100;
-                return `
-                    <div class="category-item">
-                        <div class="category-icon ${cat.toLowerCase()}">${categories[cat].icon}</div>
-                        <div class="category-info">
-                            <div class="category-name">${cat}</div>
-                            <div class="category-bar-wrapper">
-                                <div class="category-bar ${cat.toLowerCase()}" style="width: ${percentage}%"></div>
+                // Render category breakdown
+                const categoryList = document.getElementById('category-list');
+                if (categoryList) {
+                    categoryList.innerHTML = Object.keys(categoryScores).map(cat => {
+                        const score = categoryScores[cat];
+                        const max = categoryMaxScores[cat];
+                        const percentage = (score / max) * 100;
+                        return `
+                            <div class="category-item">
+                                <div class="category-icon ${cat.toLowerCase()}">${categories[cat].icon}</div>
+                                <div class="category-info">
+                                    <div class="category-name">${cat}</div>
+                                    <div class="category-bar-wrapper">
+                                        <div class="category-bar ${cat.toLowerCase()}" style="width: ${percentage}%"></div>
+                                    </div>
+                                </div>
+                                <div class="category-score">${score}/${max}</div>
                             </div>
-                        </div>
-                        <div class="category-score">${score}/${max}</div>
-                    </div>
-                `;
-            }).join('');
+                        `;
+                    }).join('');
+                }
 
-            // Render radar chart
-            renderRadarChart(categoryScores, categoryMaxScores);
+                // Render radar chart
+                renderRadarChart(categoryScores, categoryMaxScores);
 
-            // Generate recommendations
-            generateRecommendations(categoryScores, categoryMaxScores);
+                // Generate recommendations
+                generateRecommendations(categoryScores, categoryMaxScores);
+            } catch (error) {
+                console.error('Error showing results:', error);
+                alert('There was an error calculating your results. Please try again.');
+            }
         }
 
         function renderRadarChart(categoryScores, categoryMaxScores) {
-            const ctx = document.getElementById('radar-chart').getContext('2d');
+            try {
+                const canvas = document.getElementById('radar-chart');
+                if (!canvas) {
+                    console.error('Radar chart canvas not found');
+                    return;
+                }
+                const ctx = canvas.getContext('2d');
 
-            const labels = Object.keys(categoryScores);
-            const data = labels.map(cat => (categoryScores[cat] / categoryMaxScores[cat]) * 100);
+                // Check if Chart.js is loaded
+                if (typeof Chart === 'undefined') {
+                    console.error('Chart.js not loaded');
+                    return;
+                }
 
-            new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Your Score',
-                        data: data,
-                        backgroundColor: 'rgba(37, 99, 235, 0.2)',
-                        borderColor: 'rgba(37, 99, 235, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: 'rgba(37, 99, 235, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(37, 99, 235, 1)'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                stepSize: 25,
-                                display: false
-                            },
-                            grid: {
-                                color: '#e2e8f0'
-                            },
-                            angleLines: {
-                                color: '#e2e8f0'
-                            },
-                            pointLabels: {
-                                font: {
-                                    size: 12,
-                                    weight: '500'
+                const labels = Object.keys(categoryScores);
+                const data = labels.map(cat => (categoryScores[cat] / categoryMaxScores[cat]) * 100);
+
+                new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Your Score',
+                            data: data,
+                            backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                            borderColor: 'rgba(37, 99, 235, 1)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(37, 99, 235, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(37, 99, 235, 1)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 25,
+                                    display: false
                                 },
-                                color: '#475569'
+                                grid: {
+                                    color: '#e2e8f0'
+                                },
+                                angleLines: {
+                                    color: '#e2e8f0'
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 12,
+                                        weight: '500'
+                                    },
+                                    color: '#475569'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
                             }
                         }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
                     }
-                }
-            });
+                });
+            } catch (error) {
+                console.error('Error rendering radar chart:', error);
+            }
         }
 
         function generateRecommendations(categoryScores, categoryMaxScores) {
@@ -2740,122 +2773,172 @@
         }
 
         function generateReport() {
-            const { categoryScores, categoryMaxScores, totalScore, maxScore } = calculateScores();
-            const maturity = getMaturityLevel(totalScore, maxScore);
-            const dateStr = new Date().toLocaleDateString('en-US', {
-                year: 'numeric', month: 'long', day: 'numeric'
-            });
+            try {
+                // Check if html2pdf is loaded
+                if (typeof html2pdf === 'undefined') {
+                    alert('PDF library not loaded. Please check your internet connection and refresh the page.');
+                    return;
+                }
 
-            // Set date
-            document.getElementById('report-date').textContent = dateStr;
+                const { categoryScores, categoryMaxScores, totalScore, maxScore } = calculateScores();
+                const maturity = getMaturityLevel(totalScore, maxScore);
+                const dateStr = new Date().toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
 
-            // PAGE 1: Respondent Info
-            document.getElementById('pdf-user-name').textContent = userInfo.name || '-';
-            document.getElementById('pdf-user-email').textContent = userInfo.email || '-';
-            document.getElementById('pdf-user-phone').textContent = userInfo.phone || 'Not provided';
-            document.getElementById('pdf-user-company').textContent = userInfo.company || '-';
-            document.getElementById('pdf-user-industry').textContent = userInfo.industry || '-';
-            document.getElementById('pdf-assessment-date').textContent = dateStr;
+                // Set date
+                const reportDateEl = document.getElementById('report-date');
+                if (reportDateEl) reportDateEl.textContent = dateStr;
 
-            // PAGE 2: Results
-            document.getElementById('pdf-total-score').textContent = totalScore;
-            document.getElementById('pdf-strategy-score').textContent = categoryScores['Strategy'];
-            document.getElementById('pdf-people-score').textContent = categoryScores['People'];
-            document.getElementById('pdf-process-score').textContent = categoryScores['Process'];
-            document.getElementById('pdf-data-score').textContent = categoryScores['Data'];
-            document.getElementById('pdf-governance-score').textContent = categoryScores['Governance'];
+                // PAGE 1: Respondent Info
+                const setTextContent = (id, value) => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = value;
+                };
 
-            // Set score circle border color based on maturity
-            const scoreCircle = document.getElementById('pdf-score-circle');
-            const maturityColors = {
-                beginner: '#dc2626',
-                developing: '#d97706',
-                established: '#0891b2',
-                advanced: '#16a34a'
-            };
-            scoreCircle.style.borderColor = maturityColors[maturity.class] || '#2563eb';
+                setTextContent('pdf-user-name', userInfo.name || '-');
+                setTextContent('pdf-user-email', userInfo.email || '-');
+                setTextContent('pdf-user-phone', userInfo.phone || 'Not provided');
+                setTextContent('pdf-user-company', userInfo.company || '-');
+                setTextContent('pdf-user-industry', userInfo.industry || '-');
+                setTextContent('pdf-assessment-date', dateStr);
 
-            // Set maturity badge
-            const maturityBadge = document.getElementById('pdf-maturity-badge');
-            maturityBadge.className = `pdf-maturity-badge ${maturity.class}`;
-            document.getElementById('pdf-maturity-level').textContent = maturity.level;
+                // PAGE 2: Results
+                setTextContent('pdf-total-score', totalScore);
+                setTextContent('pdf-strategy-score', categoryScores['Strategy']);
+                setTextContent('pdf-people-score', categoryScores['People']);
+                setTextContent('pdf-process-score', categoryScores['Process']);
+                setTextContent('pdf-data-score', categoryScores['Data']);
+                setTextContent('pdf-governance-score', categoryScores['Governance']);
 
-            // Detailed summary text
-            const percentage = Math.round((totalScore/maxScore)*100);
-            const summaryText = `${userInfo.company} scored ${totalScore} out of ${maxScore} points (${percentage}%), achieving "${maturity.level}" AI maturity. ${getDetailedSummary(categoryScores, categoryMaxScores, maturity.level)}`;
-            document.getElementById('pdf-summary-text').textContent = summaryText;
+                // Set score circle border color based on maturity
+                const scoreCircle = document.getElementById('pdf-score-circle');
+                const maturityColors = {
+                    beginner: '#dc2626',
+                    developing: '#d97706',
+                    established: '#0891b2',
+                    advanced: '#16a34a'
+                };
+                if (scoreCircle) {
+                    scoreCircle.style.borderColor = maturityColors[maturity.class] || '#2563eb';
+                }
 
-            // Detailed Strengths and Weaknesses
-            const strengths = getDetailedStrengths(categoryScores, categoryMaxScores);
-            document.getElementById('pdf-strengths').innerHTML = strengths.map(s => `<li>${s}</li>`).join('');
+                // Set maturity badge
+                const maturityBadge = document.getElementById('pdf-maturity-badge');
+                if (maturityBadge) {
+                    maturityBadge.className = `pdf-maturity-badge ${maturity.class}`;
+                }
+                setTextContent('pdf-maturity-level', maturity.level);
 
-            const gaps = getDetailedGaps(categoryScores, categoryMaxScores);
-            document.getElementById('pdf-weaknesses').innerHTML = gaps.map(g => `<li>${g}</li>`).join('');
+                // Detailed summary text
+                const percentage = Math.round((totalScore/maxScore)*100);
+                const companyName = userInfo.company || 'Your organization';
+                const summaryText = `${companyName} scored ${totalScore} out of ${maxScore} points (${percentage}%), achieving "${maturity.level}" AI maturity. ${getDetailedSummary(categoryScores, categoryMaxScores, maturity.level)}`;
+                setTextContent('pdf-summary-text', summaryText);
 
-            // Maturity explanation
-            document.getElementById('pdf-maturity-label').textContent = maturity.level;
-            document.getElementById('pdf-maturity-description').textContent = getMaturityDescription(maturity.level);
+                // Detailed Strengths and Weaknesses
+                const strengths = getDetailedStrengths(categoryScores, categoryMaxScores);
+                const pdfStrengths = document.getElementById('pdf-strengths');
+                if (pdfStrengths) {
+                    pdfStrengths.innerHTML = strengths.map(s => `<li>${s}</li>`).join('');
+                }
 
-            // Response Summary - show key answers
-            const responseSummary = generateResponseSummary(categoryScores, categoryMaxScores);
-            document.getElementById('pdf-responses-summary').innerHTML = responseSummary;
+                const gaps = getDetailedGaps(categoryScores, categoryMaxScores);
+                const pdfWeaknesses = document.getElementById('pdf-weaknesses');
+                if (pdfWeaknesses) {
+                    pdfWeaknesses.innerHTML = gaps.map(g => `<li>${g}</li>`).join('');
+                }
 
-            // PAGE 3: Next Steps
-            const sortedCategories = Object.keys(categoryScores)
-                .map(cat => ({
-                    category: cat,
-                    score: categoryScores[cat],
-                    max: categoryMaxScores[cat],
-                    percentage: (categoryScores[cat] / categoryMaxScores[cat]) * 100
-                }))
-                .sort((a, b) => a.percentage - b.percentage);
+                // Maturity explanation
+                setTextContent('pdf-maturity-label', maturity.level);
+                setTextContent('pdf-maturity-description', getMaturityDescription(maturity.level));
 
-            const nextStepsHtml = sortedCategories.slice(0, 3).map((cat, idx) => {
-                let recLevel = 'low';
-                if (cat.percentage >= 50) recLevel = 'medium';
-                if (cat.percentage >= 75) recLevel = 'high';
-                const rec = recommendationsByCategory[cat.category][recLevel];
-                const actionItems = getActionItems(cat.category, recLevel);
+                // Response Summary - show key answers
+                const responseSummary = generateResponseSummary(categoryScores, categoryMaxScores);
+                const pdfResponses = document.getElementById('pdf-responses-summary');
+                if (pdfResponses) {
+                    pdfResponses.innerHTML = responseSummary;
+                }
 
-                return `
-                    <div class="pdf-next-step">
-                        <div class="step-header">
-                            <div class="step-number">${idx + 1}</div>
-                            <span class="step-category">${cat.category} - Score: ${cat.score}/${cat.max} (${Math.round(cat.percentage)}%)</span>
+                // PAGE 3: Next Steps
+                const sortedCategories = Object.keys(categoryScores)
+                    .map(cat => ({
+                        category: cat,
+                        score: categoryScores[cat],
+                        max: categoryMaxScores[cat],
+                        percentage: (categoryScores[cat] / categoryMaxScores[cat]) * 100
+                    }))
+                    .sort((a, b) => a.percentage - b.percentage);
+
+                const nextStepsHtml = sortedCategories.slice(0, 3).map((cat, idx) => {
+                    let recLevel = 'low';
+                    if (cat.percentage >= 50) recLevel = 'medium';
+                    if (cat.percentage >= 75) recLevel = 'high';
+                    const rec = recommendationsByCategory[cat.category][recLevel];
+                    const actionItems = getActionItems(cat.category, recLevel);
+
+                    return `
+                        <div class="pdf-next-step">
+                            <div class="step-header">
+                                <div class="step-number">${idx + 1}</div>
+                                <span class="step-category">${cat.category} - Score: ${cat.score}/${cat.max} (${Math.round(cat.percentage)}%)</span>
+                            </div>
+                            <h4>${rec.title}</h4>
+                            <p>${rec.description}</p>
+                            <p style="margin-top: 8px; font-style: italic;"><strong>Quick wins:</strong> ${actionItems}</p>
                         </div>
-                        <h4>${rec.title}</h4>
-                        <p>${rec.description}</p>
-                        <p style="margin-top: 8px; font-style: italic;"><strong>Quick wins:</strong> ${actionItems}</p>
-                    </div>
-                `;
-            }).join('');
-            document.getElementById('pdf-next-steps').innerHTML = nextStepsHtml;
+                    `;
+                }).join('');
 
-            // Industry-specific insights
-            document.getElementById('pdf-industry-name').textContent = userInfo.industry || 'Your Industry';
-            const industryInsights = getIndustryInsights(userInfo.industry, categoryScores, categoryMaxScores, maturity.level);
-            document.getElementById('pdf-industry-insights').innerHTML = `<p>${industryInsights}</p>`;
+                const pdfNextSteps = document.getElementById('pdf-next-steps');
+                if (pdfNextSteps) {
+                    pdfNextSteps.innerHTML = nextStepsHtml;
+                }
 
-            // Generate PDF
-            const element = document.getElementById('pdf-report');
-            element.classList.remove('hidden');
+                // Industry-specific insights
+                setTextContent('pdf-industry-name', userInfo.industry || 'Your Industry');
+                const industryInsights = getIndustryInsights(userInfo.industry, categoryScores, categoryMaxScores, maturity.level);
+                const pdfIndustry = document.getElementById('pdf-industry-insights');
+                if (pdfIndustry) {
+                    pdfIndustry.innerHTML = `<p>${industryInsights}</p>`;
+                }
 
-            const opt = {
-                margin: [10, 10, 10, 10],
-                filename: `AI-Readiness-Assessment-${userInfo.company.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: {
-                    scale: 2,
-                    useCORS: true,
-                    logging: false
-                },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: 'css', before: '.pdf-page', avoid: '.pdf-next-step' }
-            };
+                // Generate PDF
+                const element = document.getElementById('pdf-report');
+                if (!element) {
+                    alert('PDF template not found. Please refresh and try again.');
+                    return;
+                }
+                element.classList.remove('hidden');
 
-            html2pdf().set(opt).from(element).save().then(() => {
-                element.classList.add('hidden');
-            });
+                const filename = userInfo.company
+                    ? `AI-Readiness-Assessment-${userInfo.company.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`
+                    : 'AI-Readiness-Assessment-Report.pdf';
+
+                const opt = {
+                    margin: [10, 10, 10, 10],
+                    filename: filename,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: {
+                        scale: 2,
+                        useCORS: true,
+                        logging: false
+                    },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                    pagebreak: { mode: 'css', before: '.pdf-page', avoid: '.pdf-next-step' }
+                };
+
+                html2pdf().set(opt).from(element).save().then(() => {
+                    element.classList.add('hidden');
+                }).catch(err => {
+                    console.error('PDF generation error:', err);
+                    element.classList.add('hidden');
+                    alert('Error generating PDF. Please try again.');
+                });
+            } catch (error) {
+                console.error('Error in generateReport:', error);
+                alert('Error generating report. Please try again.');
+            }
         }
 
         function getDetailedSummary(scores, maxScores, maturityLevel) {
