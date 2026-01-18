@@ -1133,22 +1133,20 @@
 
         /* PDF Report Styles - Redesigned */
         #pdf-report {
-            width: 210mm;
+            width: 190mm;
             background: white;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1e293b;
         }
 
         .pdf-page {
-            padding: 15mm 15mm;
+            padding: 12mm 10mm;
             background: white;
-            min-height: 277mm;
             box-sizing: border-box;
-            page-break-after: always;
-            page-break-inside: avoid;
         }
 
-        .pdf-page:last-child {
-            page-break-after: auto;
+        .pdf-page-break {
+            page-break-before: always;
         }
 
         .pdf-header {
@@ -1882,6 +1880,14 @@
                 <div id="recommendations-list"></div>
             </div>
 
+            <!-- Industry Insights Section -->
+            <div class="industry-insights-section" id="industry-insights-section" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); border-radius: 16px; padding: 2rem; margin: 2rem 0; color: white;">
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">&#x1F3ED; Industry Insights: <span id="results-industry-name">Your Industry</span></h3>
+                <p style="opacity: 0.9; margin-bottom: 1rem; font-size: 0.9rem;">Tailored guidance for your sector</p>
+                <div id="results-industry-content" style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.25rem; line-height: 1.7;"></div>
+                <div id="results-industry-opportunities" style="margin-top: 1rem;"></div>
+            </div>
+
             <div class="cta-section">
                 <h2>Ready to Accelerate Your AI Journey?</h2>
                 <p>Our team of AI experts can help you implement these recommendations and build a roadmap tailored to your organization's unique needs.</p>
@@ -1902,7 +1908,7 @@
             </div>
         </section>
 
-        <!-- PDF Report Template (Hidden) - Redesigned 3-Page Layout -->
+        <!-- PDF Report Template (Hidden) -->
         <div id="pdf-report" class="hidden">
             <!-- PAGE 1: Introduction -->
             <div class="pdf-page">
@@ -1911,187 +1917,90 @@
                         <div class="pdf-logo-icon">AG</div>
                         <div class="pdf-logo-text">The AI Guides</div>
                     </div>
-                    <div class="pdf-date">
-                        Generated on <span id="report-date"></span>
-                    </div>
+                    <div class="pdf-date">Generated on <span id="report-date"></span></div>
                 </div>
 
                 <div class="pdf-title">
                     <h1>AI Readiness Assessment Report</h1>
-                    <p>A comprehensive analysis of your organization's AI maturity and actionable recommendations</p>
+                    <p>A comprehensive analysis of your organization's AI maturity</p>
                 </div>
 
                 <div class="pdf-respondent-info">
                     <h3>Assessment Details</h3>
                     <div class="pdf-respondent-grid">
-                        <div class="pdf-respondent-item">
-                            <strong>Name</strong>
-                            <span id="pdf-user-name">-</span>
-                        </div>
-                        <div class="pdf-respondent-item">
-                            <strong>Company</strong>
-                            <span id="pdf-user-company">-</span>
-                        </div>
-                        <div class="pdf-respondent-item">
-                            <strong>Industry</strong>
-                            <span id="pdf-user-industry">-</span>
-                        </div>
-                        <div class="pdf-respondent-item">
-                            <strong>Email</strong>
-                            <span id="pdf-user-email">-</span>
-                        </div>
-                        <div class="pdf-respondent-item">
-                            <strong>Phone</strong>
-                            <span id="pdf-user-phone">-</span>
-                        </div>
-                        <div class="pdf-respondent-item">
-                            <strong>Assessment Date</strong>
-                            <span id="pdf-assessment-date">-</span>
-                        </div>
+                        <div class="pdf-respondent-item"><strong>Name</strong><span id="pdf-user-name">-</span></div>
+                        <div class="pdf-respondent-item"><strong>Company</strong><span id="pdf-user-company">-</span></div>
+                        <div class="pdf-respondent-item"><strong>Industry</strong><span id="pdf-user-industry">-</span></div>
+                        <div class="pdf-respondent-item"><strong>Email</strong><span id="pdf-user-email">-</span></div>
+                        <div class="pdf-respondent-item"><strong>Phone</strong><span id="pdf-user-phone">-</span></div>
+                        <div class="pdf-respondent-item"><strong>Date</strong><span id="pdf-assessment-date">-</span></div>
                     </div>
                 </div>
 
                 <div class="pdf-section">
                     <h3 class="pdf-section-title">About This Assessment</h3>
-                    <p>
-                        This AI Readiness Assessment provides a comprehensive evaluation of your organization's preparedness to leverage artificial intelligence effectively. Unlike simple surveys, this assessment analyzes 20 key indicators across 5 critical dimensions to provide an objective, data-driven view of your current capabilities.
-                    </p>
-                    <p style="margin-top: 10px;">
-                        The results in this report will help you understand where your organization stands today, identify specific gaps that may be holding you back, and prioritize investments to accelerate your AI journey. Whether you're just getting started or looking to scale existing initiatives, this assessment provides a clear baseline for measuring progress.
-                    </p>
+                    <p>This AI Readiness Assessment evaluates your organization's preparedness to leverage artificial intelligence effectively by analyzing 20 key indicators across 5 critical dimensions.</p>
                 </div>
 
                 <div class="pdf-section">
-                    <h3 class="pdf-section-title">The Five Dimensions of AI Readiness</h3>
-                    <p>
-                        Our framework assesses AI readiness across five interconnected dimensions. Each dimension represents a critical pillar that organizations must develop to successfully implement and scale AI initiatives. Weakness in any single dimension can limit your overall AI effectiveness.
-                    </p>
+                    <h3 class="pdf-section-title">The Five Dimensions</h3>
                     <div class="pdf-dimensions-grid">
-                        <div class="pdf-dimension-card">
-                            <div class="icon">&#x1F3AF;</div>
-                            <div class="name">Strategy</div>
-                            <div class="desc">Vision, leadership, use cases, ROI measurement</div>
-                        </div>
-                        <div class="pdf-dimension-card">
-                            <div class="icon">&#x1F465;</div>
-                            <div class="name">People</div>
-                            <div class="desc">AI literacy, skills, talent, change management</div>
-                        </div>
-                        <div class="pdf-dimension-card">
-                            <div class="icon">&#x2699;</div>
-                            <div class="name">Process</div>
-                            <div class="desc">Development, integration, maintenance, scaling</div>
-                        </div>
-                        <div class="pdf-dimension-card">
-                            <div class="icon">&#x1F4BE;</div>
-                            <div class="name">Data</div>
-                            <div class="desc">Quality, infrastructure, governance, AI-readiness</div>
-                        </div>
-                        <div class="pdf-dimension-card">
-                            <div class="icon">&#x1F6E1;</div>
-                            <div class="name">Governance</div>
-                            <div class="desc">Ethics, risk, compliance, transparency</div>
-                        </div>
+                        <div class="pdf-dimension-card"><div class="name">Strategy</div><div class="desc">Vision, leadership, use cases</div></div>
+                        <div class="pdf-dimension-card"><div class="name">People</div><div class="desc">AI literacy, skills, talent</div></div>
+                        <div class="pdf-dimension-card"><div class="name">Process</div><div class="desc">Development, integration</div></div>
+                        <div class="pdf-dimension-card"><div class="name">Data</div><div class="desc">Quality, infrastructure</div></div>
+                        <div class="pdf-dimension-card"><div class="name">Governance</div><div class="desc">Ethics, risk, compliance</div></div>
                     </div>
-                </div>
-
-                <div class="pdf-section">
-                    <h3 class="pdf-section-title">How to Use This Report</h3>
-                    <p>
-                        <strong>Page 2 - Your Results:</strong> Review your overall score and maturity level, understand your performance across each dimension, and identify your key strengths and areas needing improvement.
-                    </p>
-                    <p style="margin-top: 8px;">
-                        <strong>Page 3 - Next Steps:</strong> Follow the prioritized recommendations tailored to your specific gaps, and review industry-specific insights relevant to your sector.
-                    </p>
-                </div>
-
-                <div class="pdf-cta">
-                    <h3>Questions about this assessment?</h3>
-                    <p>Our team of AI experts is here to help you understand your results and develop a customized roadmap.</p>
-                    <div class="contact-info">theaiguides.co | hello@theaiguides.co</div>
                 </div>
             </div>
 
             <!-- PAGE 2: Results -->
-            <div class="pdf-page">
+            <div class="pdf-page pdf-page-break">
                 <div class="pdf-header">
                     <div class="pdf-logo">
                         <div class="pdf-logo-icon">AG</div>
                         <div class="pdf-logo-text">The AI Guides</div>
                     </div>
-                    <div class="pdf-date">Page 2 of 3</div>
+                    <div class="pdf-date">Results</div>
                 </div>
 
-                <h2 class="pdf-section-title" style="margin-top: 0; margin-bottom: 15px;">Your Results Overview</h2>
+                <h2 class="pdf-section-title" style="margin-top: 0;">Your Results</h2>
 
                 <div class="pdf-results-summary">
-                    <div class="pdf-score-circle" id="pdf-score-circle" style="border-color: #2563eb;">
+                    <div class="pdf-score-circle" id="pdf-score-circle">
                         <div class="score" id="pdf-total-score">0</div>
                         <div class="max">of 80</div>
                     </div>
                     <div class="pdf-score-details">
-                        <div class="pdf-maturity-badge" id="pdf-maturity-badge">
-                            <span id="pdf-maturity-level">-</span>
-                        </div>
-                        <p id="pdf-summary-text" style="font-size: 13px; color: #475569; line-height: 1.6; margin-top: 10px;">
-                            Your assessment summary will appear here.
-                        </p>
+                        <div class="pdf-maturity-badge" id="pdf-maturity-badge"><span id="pdf-maturity-level">-</span></div>
+                        <p id="pdf-summary-text" style="font-size: 12px; color: #475569; line-height: 1.5; margin-top: 8px;"></p>
                     </div>
                 </div>
 
                 <div class="pdf-section">
                     <h3 class="pdf-section-title">Score by Category</h3>
-                    <p style="margin-bottom: 10px; font-size: 12px;">Each category is scored out of 16 points (4 questions x 4 max points). Higher scores indicate greater maturity in that dimension.</p>
                     <div class="pdf-category-scores">
-                        <div class="pdf-category-score strategy">
-                            <div class="score" id="pdf-strategy-score">0</div>
-                            <div class="name">Strategy<br/>(of 16)</div>
-                        </div>
-                        <div class="pdf-category-score people">
-                            <div class="score" id="pdf-people-score">0</div>
-                            <div class="name">People<br/>(of 16)</div>
-                        </div>
-                        <div class="pdf-category-score process">
-                            <div class="score" id="pdf-process-score">0</div>
-                            <div class="name">Process<br/>(of 16)</div>
-                        </div>
-                        <div class="pdf-category-score data">
-                            <div class="score" id="pdf-data-score">0</div>
-                            <div class="name">Data<br/>(of 16)</div>
-                        </div>
-                        <div class="pdf-category-score governance">
-                            <div class="score" id="pdf-governance-score">0</div>
-                            <div class="name">Governance<br/>(of 16)</div>
-                        </div>
+                        <div class="pdf-category-score strategy"><div class="score" id="pdf-strategy-score">0</div><div class="name">Strategy</div></div>
+                        <div class="pdf-category-score people"><div class="score" id="pdf-people-score">0</div><div class="name">People</div></div>
+                        <div class="pdf-category-score process"><div class="score" id="pdf-process-score">0</div><div class="name">Process</div></div>
+                        <div class="pdf-category-score data"><div class="score" id="pdf-data-score">0</div><div class="name">Data</div></div>
+                        <div class="pdf-category-score governance"><div class="score" id="pdf-governance-score">0</div><div class="name">Governance</div></div>
                     </div>
                 </div>
 
                 <div class="pdf-sw-grid">
-                    <div class="pdf-sw-card strengths">
-                        <h4>&#x2705; Key Strengths</h4>
-                        <ul id="pdf-strengths"></ul>
-                    </div>
-                    <div class="pdf-sw-card weaknesses">
-                        <h4>&#x26A0; Areas for Improvement</h4>
-                        <ul id="pdf-weaknesses"></ul>
-                    </div>
+                    <div class="pdf-sw-card strengths"><h4>Key Strengths</h4><ul id="pdf-strengths"></ul></div>
+                    <div class="pdf-sw-card weaknesses"><h4>Areas for Improvement</h4><ul id="pdf-weaknesses"></ul></div>
                 </div>
 
                 <div class="pdf-maturity-explanation">
-                    <h4>What does "<span id="pdf-maturity-label">-</span>" maturity mean?</h4>
-                    <p id="pdf-maturity-description">
-                        Your maturity level explanation will appear here.
-                    </p>
-                </div>
-
-                <div class="pdf-section" style="margin-top: 15px;">
-                    <h3 class="pdf-section-title">Your Response Summary</h3>
-                    <div id="pdf-responses-summary" style="font-size: 11px; color: #475569;"></div>
+                    <h4>What does "<span id="pdf-maturity-label">-</span>" mean?</h4>
+                    <p id="pdf-maturity-description"></p>
                 </div>
             </div>
 
             <!-- PAGE 3: Next Steps -->
-            <div class="pdf-page">
+            <div class="pdf-page pdf-page-break">
                 <div class="pdf-header">
                     <div class="pdf-logo">
                         <div class="pdf-logo-icon">AG</div>
@@ -2770,6 +2679,185 @@
                     </div>
                 `;
             }).join('');
+
+            // Populate industry insights section
+            populateIndustryInsights(categoryScores, categoryMaxScores);
+        }
+
+        function populateIndustryInsights(categoryScores, categoryMaxScores) {
+            const industry = userInfo.industry || 'Other';
+            const maturity = getMaturityLevel(
+                Object.values(categoryScores).reduce((a, b) => a + b, 0),
+                Object.values(categoryMaxScores).reduce((a, b) => a + b, 0)
+            );
+
+            // Set industry name
+            const industryNameEl = document.getElementById('results-industry-name');
+            if (industryNameEl) {
+                industryNameEl.textContent = industry;
+            }
+
+            // Get detailed industry content
+            const industryContent = getDetailedIndustryInsights(industry, categoryScores, categoryMaxScores, maturity.level);
+            const industryContentEl = document.getElementById('results-industry-content');
+            if (industryContentEl) {
+                industryContentEl.innerHTML = industryContent;
+            }
+
+            // Get industry-specific opportunities
+            const opportunities = getIndustryOpportunities(industry, categoryScores, categoryMaxScores);
+            const opportunitiesEl = document.getElementById('results-industry-opportunities');
+            if (opportunitiesEl) {
+                opportunitiesEl.innerHTML = opportunities;
+            }
+        }
+
+        function getDetailedIndustryInsights(industry, scores, maxScores, maturityLevel) {
+            const insights = {
+                'Technology': {
+                    overview: `As a technology company, you have inherent advantages in AI adoption including technical talent, modern infrastructure, and a culture of innovation. Your challenge is likely less about "can we do AI" and more about "how do we prioritize and scale AI effectively."`,
+                    opportunities: [
+                        'Embed AI into your core products to create differentiated customer value',
+                        'Use AI to accelerate your own software development lifecycle',
+                        'Build proprietary AI capabilities that become competitive moats',
+                        'Leverage your engineering culture to drive rapid experimentation'
+                    ],
+                    watchouts: 'Avoid "AI for AI\'s sake" - focus on business outcomes, not just technical achievements.'
+                },
+                'Financial Services': {
+                    overview: `Financial services organizations face unique AI opportunities and challenges. Regulatory compliance, explainability requirements, and risk management are critical, but the potential for AI in fraud detection, personalization, and operational efficiency is enormous.`,
+                    opportunities: [
+                        'Fraud detection and anti-money laundering using pattern recognition',
+                        'Personalized financial advice and product recommendations',
+                        'Automated underwriting and credit scoring with explainable models',
+                        'Intelligent document processing for compliance and operations'
+                    ],
+                    watchouts: 'Prioritize explainable AI and ensure robust model governance to meet regulatory requirements.'
+                },
+                'Healthcare': {
+                    overview: `Healthcare AI offers transformative potential but requires careful attention to patient safety, data privacy, and clinical validation. The combination of rich data and high-stakes decisions makes governance particularly important.`,
+                    opportunities: [
+                        'Clinical decision support to assist (not replace) physician judgment',
+                        'Medical imaging analysis for faster, more accurate diagnostics',
+                        'Operational efficiency in scheduling, staffing, and supply chain',
+                        'Patient engagement through AI-powered health monitoring'
+                    ],
+                    watchouts: 'Clinical AI applications require rigorous validation and regulatory approval before deployment.'
+                },
+                'Manufacturing': {
+                    overview: `Manufacturing is ripe for AI transformation with rich operational data from IoT sensors and equipment. Predictive maintenance, quality control, and supply chain optimization offer clear ROI paths.`,
+                    opportunities: [
+                        'Predictive maintenance to reduce unplanned downtime',
+                        'Computer vision for automated quality inspection',
+                        'Supply chain optimization and demand forecasting',
+                        'Energy optimization and sustainability improvements'
+                    ],
+                    watchouts: 'Start with well-instrumented processes where sensor data already exists.'
+                },
+                'Retail': {
+                    overview: `Retail AI can transform both customer experience and operational efficiency. The key is unifying data across channels to enable personalization while managing customer privacy expectations.`,
+                    opportunities: [
+                        'Personalized product recommendations across channels',
+                        'Demand forecasting and inventory optimization',
+                        'Dynamic pricing based on market conditions',
+                        'Customer service automation with chatbots and virtual assistants'
+                    ],
+                    watchouts: 'Balance personalization benefits against customer privacy concerns and preferences.'
+                },
+                'Professional Services': {
+                    overview: `Professional services firms can use AI to augment expert knowledge, improve client delivery, and create new service offerings. The key is enhancing professionals\' capabilities rather than replacing judgment.`,
+                    opportunities: [
+                        'Knowledge management and intelligent search across firm expertise',
+                        'Document analysis and contract review automation',
+                        'Client insights from relationship and engagement data',
+                        'Proposal generation and pricing optimization'
+                    ],
+                    watchouts: 'Focus on AI as a tool that makes professionals more effective, not as a replacement.'
+                },
+                'Other': {
+                    overview: `Every industry has unique AI opportunities based on its specific data assets, processes, and competitive dynamics. The key is identifying where AI can address your most pressing business challenges.`,
+                    opportunities: [
+                        'Process automation for repetitive, rule-based tasks',
+                        'Customer experience improvement through personalization',
+                        'Operational efficiency gains from predictive analytics',
+                        'New product or service offerings enabled by AI capabilities'
+                    ],
+                    watchouts: 'Look at AI leaders in adjacent industries for inspiration and proven patterns.'
+                }
+            };
+
+            const industryData = insights[industry] || insights['Other'];
+
+            return `
+                <p style="margin-bottom: 1rem;">${industryData.overview}</p>
+                <p style="font-weight: 600; margin-bottom: 0.5rem;">Key Opportunities for ${industry}:</p>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                    ${industryData.opportunities.map(o => `<li style="margin-bottom: 0.25rem;">${o}</li>`).join('')}
+                </ul>
+                <p style="margin-top: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.15); border-radius: 8px; font-size: 0.9rem;">
+                    <strong>Watch out:</strong> ${industryData.watchouts}
+                </p>
+            `;
+        }
+
+        function getIndustryOpportunities(industry, scores, maxScores) {
+            // Find the weakest area to give industry-specific advice
+            const sorted = Object.keys(scores)
+                .map(cat => ({ cat, pct: (scores[cat] / maxScores[cat]) * 100 }))
+                .sort((a, b) => a.pct - b.pct);
+
+            const weakest = sorted[0];
+
+            const industrySpecificAdvice = {
+                'Technology': {
+                    'Strategy': 'Consider creating an AI product council to systematically evaluate AI integration across your product portfolio.',
+                    'People': 'Leverage your technical culture by creating AI guilds and internal hackathons to build capabilities.',
+                    'Process': 'Implement MLOps practices similar to your existing DevOps to standardize AI deployment.',
+                    'Data': 'Your engineering team can build data infrastructure - prioritize feature stores and data versioning.',
+                    'Governance': 'Establish responsible AI principles early - your practices will influence the broader tech ecosystem.'
+                },
+                'Financial Services': {
+                    'Strategy': 'Form a cross-functional AI working group including risk, compliance, and business stakeholders.',
+                    'People': 'Partner with regulators proactively on AI training - they need to understand what you\'re building.',
+                    'Process': 'Build model risk management into your AI development lifecycle from day one.',
+                    'Data': 'Data lineage and quality are non-negotiable for regulated AI - invest in robust data governance.',
+                    'Governance': 'Create detailed model documentation standards that satisfy both internal risk and external regulators.'
+                },
+                'Healthcare': {
+                    'Strategy': 'Align AI initiatives with value-based care goals to ensure ROI and patient outcome improvements.',
+                    'People': 'Include clinicians in AI development - their domain expertise is essential for healthcare AI.',
+                    'Process': 'Plan for FDA and regulatory pathways early when developing clinical decision support tools.',
+                    'Data': 'HIPAA compliance is baseline - go beyond to build patient trust in how you use health data.',
+                    'Governance': 'Establish clinical validation requirements before any AI tool touches patient care.'
+                },
+                'Manufacturing': {
+                    'Strategy': 'Start with equipment and processes that already have rich sensor data for quick AI wins.',
+                    'People': 'Train plant floor workers on AI tools - their operational knowledge is invaluable for AI success.',
+                    'Process': 'Pilot AI on non-critical processes first, then scale to production-critical applications.',
+                    'Data': 'Industrial IoT investment is foundational - you can\'t do manufacturing AI without sensor data.',
+                    'Governance': 'Safety-critical AI applications require rigorous testing and fail-safe mechanisms.'
+                },
+                'Retail': {
+                    'Strategy': 'Map AI use cases to customer journey stages - awareness, consideration, purchase, loyalty.',
+                    'People': 'Train store associates to work with AI recommendations, not against them.',
+                    'Process': 'A/B test AI-driven changes carefully - small improvements scale massively in retail.',
+                    'Data': 'Unify customer data across online and offline channels for true omnichannel AI.',
+                    'Governance': 'Be transparent with customers about how you use their data for personalization.'
+                }
+            };
+
+            const advice = industrySpecificAdvice[industry]?.[weakest.cat] ||
+                `Focus on strengthening your ${weakest.cat.toLowerCase()} capabilities - this is your biggest opportunity for improvement.`;
+
+            return `
+                <div style="display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 8px; margin-top: 0.5rem;">
+                    <span style="font-size: 1.5rem;">&#x1F4CC;</span>
+                    <div>
+                        <strong style="display: block; margin-bottom: 0.25rem;">Priority Action for ${industry}:</strong>
+                        <span style="font-size: 0.95rem;">${advice}</span>
+                    </div>
+                </div>
+            `;
         }
 
         function generateReport() {
@@ -2916,16 +3004,17 @@
                     : 'AI-Readiness-Assessment-Report.pdf';
 
                 const opt = {
-                    margin: [10, 10, 10, 10],
+                    margin: [8, 8, 8, 8],
                     filename: filename,
-                    image: { type: 'jpeg', quality: 0.98 },
+                    image: { type: 'jpeg', quality: 0.95 },
                     html2canvas: {
-                        scale: 2,
+                        scale: 1.5,
                         useCORS: true,
-                        logging: false
+                        logging: false,
+                        letterRendering: true
                     },
                     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                    pagebreak: { mode: 'css', before: '.pdf-page', avoid: '.pdf-next-step' }
+                    pagebreak: { mode: 'css', before: '.pdf-page-break' }
                 };
 
                 html2pdf().set(opt).from(element).save().then(() => {
