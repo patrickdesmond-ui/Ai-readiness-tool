@@ -3018,8 +3018,24 @@
                     pagebreak: { mode: 'avoid-all', avoid: ['div', 'table', 'tr'] }
                 };
 
-                html2pdf().set(opt).from(element).save().then(() => {
+                html2pdf().set(opt).from(element).outputPdf('blob').then((pdfBlob) => {
                     element.classList.add('hidden');
+
+                    // Create blob URL and open in new tab
+                    const blobUrl = URL.createObjectURL(pdfBlob);
+                    const newTab = window.open(blobUrl, '_blank');
+
+                    // Fallback: if popup blocked, offer download instead
+                    if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+                        const link = document.createElement('a');
+                        link.href = blobUrl;
+                        link.download = filename;
+                        link.click();
+                        alert('Popup blocked by browser. The PDF has been downloaded instead.');
+                    }
+
+                    // Clean up blob URL after delay to allow tab to load
+                    setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
                 }).catch(err => {
                     console.error('PDF generation error:', err);
                     element.classList.add('hidden');
